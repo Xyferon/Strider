@@ -3,10 +3,10 @@ Regex-based PII detection module.
 Detects PII using predefined regex patterns.
 """
 
+import re
 from utils.logger import get_logger
 
 logger = get_logger("regex_detector")
-
 
 class RegexDetector:
     """Regex-based PII detector."""
@@ -14,13 +14,15 @@ class RegexDetector:
     def __init__(self):
         """Initialize regex patterns for PII detection."""
         self.patterns = {
-            'ssn': r'\b\d{3}-\d{2}-\d{4}\b',
-            'credit_card': r'\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b',
-            'email': r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b',
-            'phone': r'\b\d{3}[-.]?\d{3}[-.]?\d{4}\b',
+            "EMAIL": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
+            "PHONE": r"(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}",
+            "AADHAAR": r"\b\d{4}\s\d{4}\s\d{4}\b",
+            "PAN": r"\b[A-Z]{5}[0-9]{4}[A-Z]{1}\b",
+            "CREDIT_CARD": r"\b(?:\d[ -]*?){13,16}\b",
+            "IP_ADDRESS": r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
         }
     
-    def detect(self, text: str) -> dict:
+    def detect(self, text: str) -> list:
         """
         Detect PII in text using regex patterns.
         
@@ -28,12 +30,24 @@ class RegexDetector:
             text: Input text to analyze
             
         Returns:
-            Dictionary with detected PII types and matches
+            List of detected PII matches with their details
         """
-        results = {}
+        results = []
         for pii_type, pattern in self.patterns.items():
-            # Implementation placeholder
-            results[pii_type] = []
+            matches = re.finditer(pattern, text)
+            for match in matches:
+                results.append({
+                    "text": match.group(),
+                    "type": pii_type,
+                    "start": match.start(),
+                    "end": match.end(),
+                    "method": "regex"
+                })
         
         logger.info(f"Regex detection completed for text ({len(text)} chars)")
         return results
+
+if __name__ == "__main__":
+    detector = RegexDetector()
+    test_text = "Contact me at test@example.com or 9876543210. Aadhaar: 1234 5678 9012. PAN: ABCDE1234F"
+    print(detector.detect(test_text))
