@@ -56,6 +56,7 @@ class NERDetector:
                 results.append(
                     {
                         "type": ent.label_.lower(),
+                        "raw_value": value,
                         "masked_value": _mask(value),
                         # Confidence is exposed via the public API and must
                         # be normalized between 0 and 1.

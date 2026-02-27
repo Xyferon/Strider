@@ -59,6 +59,7 @@ class RegexDetector:
                 results.append(
                     {
                         "type": pii_type,
+                        "raw_value": value,
                         "masked_value": _mask(value),
                         "confidence": 0.9,
                         "detection_method": "regex",

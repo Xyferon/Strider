@@ -33,6 +33,7 @@ class RateLimiter:
         self._count = 0
 
     def wait_if_needed(self) -> None:
+        sleep_for = 0.0
         with self._lock:
             now = time.time()
             if now - self._window_start >= self.window_seconds:
@@ -44,8 +45,16 @@ class RateLimiter:
                 return
 
             sleep_for = self.window_seconds - (now - self._window_start)
-            if sleep_for > 0:
-                time.sleep(sleep_for)
+            if sleep_for <= 0:
+                self._window_start = time.time()
+                self._count = 1
+                return
+
+        # Sleep outside the lock so we don't block other threads
+        time.sleep(sleep_for)
+        
+        # After sleeping, re-acquire the lock to update state
+        with self._lock:
             self._window_start = time.time()
             self._count = 1
 
@@ -72,12 +81,14 @@ class PastebinRateLimiter:
         self.min_delay = min_delay
         self.max_delay = max_delay
         self.jitter = jitter
+        self._lock = threading.Lock()
 
     def wait(self) -> None:
-        base = random.uniform(self.min_delay, self.max_delay)
-        jitter = random.uniform(-self.jitter, self.jitter)
-        delay = max(0.0, base + jitter)
-        time.sleep(delay)
+        with self._lock:
+            base = random.uniform(self.min_delay, self.max_delay)
+            jitter = random.uniform(-self.jitter, self.jitter)
+            delay = max(0.0, base + jitter)
+            time.sleep(delay)
 
 
 __all__ = ["RateLimiter", "PastebinRateLimiter"]

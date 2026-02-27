@@ -6,7 +6,7 @@ Scraped documents -> detection -> classification -> risk scoring.
 
 from __future__ import annotations
 
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 from detection.pii_combiner import PIICombiner
 from backend.classifier import Classifier
@@ -21,9 +21,15 @@ _classifier = Classifier()
 _scorer = RiskScorer()
 
 
-def run_pipeline(documents: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def run_pipeline(
+    documents: List[Dict[str, Any]],
+    target: Optional[str] = None,
+) -> List[Dict[str, Any]]:
     """
     Run the full PII analysis pipeline over a list of documents.
+
+    If a target string is provided, only documents whose URL, raw_text, or
+    clean_text contain the target (case-insensitive) are processed.
 
     Returns a list of incident dicts with schema:
     - incident_id
@@ -32,6 +38,18 @@ def run_pipeline(documents: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     - entities (list of detection entities)
     plus selected document context fields.
     """
+    # Optional target-based filtering applied after scraping/cleaning.
+    if target:
+        t = target.lower()
+        filtered: List[Dict[str, Any]] = []
+        for doc in documents:
+            url = str(doc.get("url") or "").lower()
+            raw_text = str(doc.get("raw_text") or "").lower()
+            clean_text = str(doc.get("clean_text") or "").lower()
+            if t in url or t in raw_text or t in clean_text:
+                filtered.append(doc)
+        documents = filtered
+
     incidents: List[Dict[str, Any]] = []
 
     for idx, doc in enumerate(documents):

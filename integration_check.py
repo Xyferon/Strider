@@ -49,6 +49,29 @@ def main() -> None:
         ]
 
     incidents = run_pipeline(documents)
+    
+    # Generate Report
+    from reports.report_generator import ReportGenerator
+    from reports.alert_system import AlertSystem
+    
+    generator = ReportGenerator()
+    report = generator.generate(incidents)
+    
+    # Save Report
+    reports_dir = Path("reports")
+    reports_dir.mkdir(exist_ok=True)
+    report_file = reports_dir / "scan_report.json"
+    with open(report_file, "w", encoding="utf-8") as f:
+        json.dump(report, f, indent=2)
+    logger.info(f"Detailed scan report saved to {report_file}")
+    
+    # Fire alerts for high/critical risks
+    alerter = AlertSystem()
+    for inc in incidents:
+        sev = inc.get("severity", "low")
+        if sev in ["high", "critical"]:
+            alerter.send_alert(sev, f"Incident {inc.get('incident_id')} detected with risk score {inc.get('risk_score')}. Entities: {len(inc.get('entities', []))}")
+
     print(f"Incidents produced: {len(incidents)}")
     for inc in incidents:
         print(

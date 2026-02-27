@@ -17,10 +17,16 @@ from reports.dashboard import Dashboard
 from utils.logger import get_logger
 
 
+import argparse
+
 logger = get_logger("generate_dashboard")
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate PII Dashboard")
+    parser.add_argument("--domain", type=str, help="Target domain or keyword to filter report generation.")
+    args = parser.parse_args()
+
     output_path = Path(config.OUTPUT_FILE)
     if not output_path.exists():
         logger.warning("No scraped documents found; run `python app.py` first.")
@@ -32,7 +38,7 @@ def main() -> None:
             logger.error("Scraped document file did not contain a list; using empty list")
             documents = []
 
-    incidents = run_pipeline(documents)
+    incidents = run_pipeline(documents, target=args.domain)
 
     dashboard = Dashboard()
     html = dashboard.render(incidents)

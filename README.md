@@ -89,6 +89,15 @@ cp .env.example .env
 
 ```bash
 python app.py
+python integration_check.py
+python generate_dashboard.py
+```
+
+### Running Detection Accuracy Demo
+
+To review the detection and classification accuracy on known data samples, run:
+```bash
+python demo.py
 ```
 
 ### Running in Docker

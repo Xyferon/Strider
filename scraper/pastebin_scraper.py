@@ -53,9 +53,66 @@ def _get_paste_ids() -> list[str]:
         return []
 
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+def _process_paste(i: int, total: int, paste_id: str, limiter: PastebinRateLimiter) -> dict | None:
+    """Worker function to process a single paste."""
+    raw_url = config.PASTEBIN_RAW_URL_TEMPLATE.format(paste_id=paste_id)
+    html_url = f"https://pastebin.com/{paste_id}"
+
+    try:
+        limiter.wait()
+        resp = requests.get(
+            raw_url,
+            headers={"User-Agent": "PII-Leakage-Scanner/1.0"},
+            timeout=15,
+        )
+
+        if resp.status_code != 200:
+            logger.warning(
+                f"Paste {paste_id}: status {resp.status_code}"
+            )
+            return None
+
+        raw_text = resp.text
+
+        if not raw_text.strip():
+            logger.info(f"Paste {paste_id}: empty, skipping")
+            return None
+
+        # Skip very large pastes
+        if len(raw_text.encode("utf-8", errors="replace")) > config.GITHUB_MAX_FILE_SIZE_BYTES:
+            logger.info(f"Paste {paste_id}: too large, skipping")
+            return None
+
+        cleaned = clean_text(raw_text)
+
+        doc = create_document(
+            source="pastebin",
+            source_type="paste",
+            url=html_url,
+            raw_text=raw_text,
+            clean_text=cleaned,
+            author=None,
+            tags=["archive"],
+        )
+        logger.info(
+            f"Paste {i + 1}/{total}: {paste_id} collected "
+            f"({len(cleaned)} chars)"
+        )
+        return doc
+
+    except requests.RequestException as exc:
+        logger.error(f"Paste {paste_id}: request error — {exc}")
+        return None
+    except Exception as exc:
+        logger.error(f"Paste {paste_id}: unexpected error — {exc}")
+        return None
+
+
 def scrape_pastebin() -> list[dict]:
     """
-    Main entry point.  Fetches recent Pastebin pastes and returns
+    Main entry point.  Fetches recent Pastebin pastes concurrently and returns
     schema-compliant documents.
     """
     limiter = PastebinRateLimiter(
@@ -70,59 +127,19 @@ def scrape_pastebin() -> list[dict]:
         return []
 
     documents: list[dict] = []
+    total = len(paste_ids)
 
-    for i, paste_id in enumerate(paste_ids):
-        raw_url = config.PASTEBIN_RAW_URL_TEMPLATE.format(paste_id=paste_id)
-        html_url = f"https://pastebin.com/{paste_id}"
-
-        try:
-            limiter.wait()
-            resp = requests.get(
-                raw_url,
-                headers={"User-Agent": "PII-Leakage-Scanner/1.0"},
-                timeout=15,
-            )
-
-            if resp.status_code != 200:
-                logger.warning(
-                    f"Paste {paste_id}: status {resp.status_code}"
-                )
-                continue
-
-            raw_text = resp.text
-
-            if not raw_text.strip():
-                logger.info(f"Paste {paste_id}: empty, skipping")
-                continue
-
-            # Skip very large pastes
-            if len(raw_text.encode("utf-8", errors="replace")) > config.GITHUB_MAX_FILE_SIZE_BYTES:
-                logger.info(f"Paste {paste_id}: too large, skipping")
-                continue
-
-            cleaned = clean_text(raw_text)
-
-            doc = create_document(
-                source="pastebin",
-                source_type="paste",
-                url=html_url,
-                raw_text=raw_text,
-                clean_text=cleaned,
-                author=None,
-                tags=["archive"],
-            )
-            documents.append(doc)
-            logger.info(
-                f"Paste {i + 1}/{len(paste_ids)}: {paste_id} collected "
-                f"({len(cleaned)} chars)"
-            )
-
-        except requests.RequestException as exc:
-            logger.error(f"Paste {paste_id}: request error — {exc}")
-            continue
-        except Exception as exc:
-            logger.error(f"Paste {paste_id}: unexpected error — {exc}")
-            continue
+    logger.info(f"Processing {total} Pastebin items concurrently...")
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        future_to_paste = {
+            executor.submit(_process_paste, i, total, paste_id, limiter): paste_id
+            for i, paste_id in enumerate(paste_ids)
+        }
+        
+        for future in as_completed(future_to_paste):
+            doc = future.result()
+            if doc:
+                documents.append(doc)
 
     logger.info(
         f"Pastebin scraping complete. Collected {len(documents)} documents."

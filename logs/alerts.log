@@ -1,0 +1,17 @@
+[2026-02-28T00:59:40.488301] [HIGH] Incident inc-0 detected with risk score 0.6. Entities: 230
+[2026-02-28T00:59:40.489896] [HIGH] Incident inc-1 detected with risk score 0.6. Entities: 16
+[2026-02-28T01:16:50.744078] [HIGH] Incident inc-0 detected with risk score 0.6. Entities: 230
+[2026-02-28T01:16:50.745303] [HIGH] Incident inc-1 detected with risk score 0.6. Entities: 16
+[2026-02-28T01:29:10.455556] [HIGH] Incident inc-0 detected with risk score 0.6. Entities: 230
+[2026-02-28T01:29:10.456545] [HIGH] Incident inc-1 detected with risk score 0.6. Entities: 16
+[2026-02-28T02:07:36.460073] [HIGH] Incident inc-1 detected with risk score 0.6. Entities: 17
+[2026-02-28T02:07:36.460939] [HIGH] Incident inc-2 detected with risk score 0.7. Entities: 2
+[2026-02-28T02:07:36.490249] [HIGH] Incident inc-4 detected with risk score 0.7. Entities: 3
+[2026-02-28T02:07:36.492697] [CRITICAL] Incident inc-6 detected with risk score 0.8. Entities: 3
+[2026-02-28T02:07:36.495791] [CRITICAL] Incident inc-7 detected with risk score 1.0. Entities: 4
+[2026-02-28T02:07:36.497929] [HIGH] Incident inc-11 detected with risk score 0.6. Entities: 20
+[2026-02-28T02:07:36.499433] [HIGH] Incident inc-18 detected with risk score 0.6. Entities: 26
+[2026-02-28T02:07:36.500515] [HIGH] Incident inc-19 detected with risk score 0.6. Entities: 22
+[2026-02-28T02:07:36.501448] [HIGH] Incident inc-27 detected with risk score 0.6. Entities: 23
+[2026-02-28T02:07:36.502263] [HIGH] Incident inc-28 detected with risk score 0.6. Entities: 28
+[2026-02-28T02:07:36.503202] [HIGH] Incident inc-32 detected with risk score 0.6. Entities: 11

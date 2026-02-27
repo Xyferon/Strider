@@ -1,27 +1,4 @@
-"""
-Dashboard module for visualizing results.
-"""
-
-from typing import List, Dict, Any
-
-from utils.logger import get_logger
-
-logger = get_logger("dashboard")
-
-
-class Dashboard:
-    """Manages dashboard for visualizing PII detection results."""
-
-    def __init__(self) -> None:
-        """Initialize dashboard."""
-        logger.info("Initializing Dashboard...")
-
-    def render(self, incidents: List[Dict[str, Any]]) -> str:
-        """
-        Render a modern HTML/JS dashboard that provides interactive searching,
-        heatmap visualization, and detailed victim modals.
-        """
-        html = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -664,6 +641,3 @@ class Dashboard:
 </script>
 </body>
 </html>
-"""
-        logger.info("Dashboard rendered dynamically with modern UI (Heatmap & Modals)")
-        return html

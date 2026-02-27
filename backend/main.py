@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import Any, Dict, List
+from typing import Any, Dict, Iterable, List, Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -12,6 +12,7 @@ from starlette.requests import Request
 from backend.pipeline import run_pipeline
 from backend.schemas import (
     ErrorResponse,
+    IdentityAggregateItemV1,
     IncidentDetailV1,
     IncidentEntityV1,
     IncidentSummaryV1,
@@ -89,11 +90,12 @@ def _parse_timestamp(raw: Any) -> datetime:
         return _now_utc()
 
 
-def _run_full_scan() -> List[Dict[str, Any]]:
+def _run_full_scan(target: Optional[str] = None) -> List[Dict[str, Any]]:
     """
     Run scraper -> deduplication -> detection/classification/risk pipeline.
 
     Results are stored in memory for subsequent /metrics and /incidents calls.
+    If target is provided, only documents matching the target are processed.
     """
     global _INCIDENT_STORE, _LAST_SCAN_TIMESTAMP
 
@@ -123,7 +125,7 @@ def _run_full_scan() -> List[Dict[str, Any]]:
             continue
         unique_documents.append(doc)
 
-    incidents = run_pipeline(unique_documents)
+    incidents = run_pipeline(unique_documents, target=target)
 
     # Store results in memory for subsequent reads
     _INCIDENT_STORE = {inc["incident_id"]: inc for inc in incidents}
@@ -166,7 +168,7 @@ def health_check() -> Dict[str, str]:
 
 
 @app.post("/scan", response_model=ScanTriggerResponseV1)
-def trigger_scan() -> ScanTriggerResponseV1:
+def trigger_scan(target: str | None = Query(default=None)) -> ScanTriggerResponseV1:
     """
     Trigger the full pipeline:
     - Run scrapers
@@ -176,13 +178,95 @@ def trigger_scan() -> ScanTriggerResponseV1:
     - Store results in memory
     """
     try:
-        incidents = _run_full_scan()
+        incidents = _run_full_scan(target=target)
     except Exception as exc:  # pragma: no cover - defensive
         logger.error("Scan failed: %s", exc)
         raise HTTPException(status_code=500, detail="Scan failed")
 
     ts = _LAST_SCAN_TIMESTAMP or _now_utc()
-    return ScanTriggerResponseV1(incidents_found=len(incidents), scan_timestamp=ts)
+    return ScanTriggerResponseV1(
+        target=target,
+        incidents_found=len(incidents),
+        scan_timestamp=ts,
+    )
+
+
+def _severity_for_max_score(
+    candidates: List[tuple[float, Severity]],
+) -> Severity:
+    """
+    Given (score, severity) pairs, return the severity for the highest score.
+    """
+    if not candidates:
+        return Severity.LOW
+    best_score, best_sev = sorted(candidates, key=lambda x: x[0], reverse=True)[0]
+    return best_sev
+
+
+def aggregate_identities(
+    incidents: Iterable[Dict[str, Any]],
+) -> List[IdentityAggregateItemV1]:
+    """
+    Group incidents by EMAIL entities (identity-centric view).
+    """
+    buckets: Dict[str, Dict[str, Any]] = {}
+
+    for inc in incidents:
+        incident_id = str(inc.get("incident_id") or "")
+        risk_score = float(inc.get("risk_score") or 0.0)
+        severity = _normalize_severity(inc.get("severity"))
+        ts = _parse_timestamp(inc.get("timestamp") or _LAST_SCAN_TIMESTAMP)
+
+        for ent in inc.get("entities") or []:
+            ent_type = str(ent.get("type") or "")
+            if ent_type.upper() != "EMAIL":
+                continue
+
+            email = str(ent.get("masked_value") or "").strip()
+            if not email:
+                continue
+
+            if "@" in email:
+                domain = email.split("@", 1)[1]
+            else:
+                domain = ""
+
+            entry = buckets.setdefault(
+                email,
+                {
+                    "email": email,
+                    "domain": domain,
+                    "occurrences": 0,
+                    "max_risk_score": 0.0,
+                    "scores": [],
+                    "last_seen": ts,
+                    "related_incident_ids": [],
+                },
+            )
+
+            entry["occurrences"] += 1
+            entry["related_incident_ids"].append(incident_id)
+            entry["max_risk_score"] = max(entry["max_risk_score"], risk_score)
+            entry["last_seen"] = max(entry["last_seen"], ts)
+            entry["scores"].append((risk_score, severity))
+
+    results: List[IdentityAggregateItemV1] = []
+    for email, data in buckets.items():
+        highest_severity = _severity_for_max_score(data["scores"])
+        results.append(
+            IdentityAggregateItemV1(
+                email=data["email"],
+                domain=data["domain"],
+                occurrences=data["occurrences"],
+                max_risk_score=int(round(data["max_risk_score"])),
+                highest_severity=highest_severity,
+                last_seen=data["last_seen"],
+                related_incident_ids=data["related_incident_ids"],
+            )
+        )
+
+    results.sort(key=lambda item: item.occurrences, reverse=True)
+    return results
 
 
 @app.get("/metrics", response_model=MetricsResponseV1)
@@ -272,3 +356,14 @@ def get_incident_detail(incident_id: str) -> IncidentDetailV1:
         entities=entities,
         context_snippet=str(inc.get("context_snippet") or ""),
     )
+
+
+@app.get("/identities", response_model=List[IdentityAggregateItemV1])
+def list_identities() -> List[IdentityAggregateItemV1]:
+    """
+    Identity-centric aggregation endpoint.
+
+    Groups incidents by EMAIL entities and exposes summary stats.
+    """
+    incidents = list(_INCIDENT_STORE.values())
+    return aggregate_identities(incidents)

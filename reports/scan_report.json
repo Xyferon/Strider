@@ -1,0 +1,3989 @@
+{
+  "timestamp": "2026-02-27T21:33:09.040320+00:00",
+  "summary": {
+    "total_incidents": 40,
+    "critical_risk_count": 5,
+    "high_risk_count": 11,
+    "total_entities_detected": 357
+  },
+  "details": [
+    {
+      "incident_id": "inc-0",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 232,
+          "end_index": 237
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 647,
+          "end_index": 652
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 874,
+          "end_index": 879
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Wonderland",
+          "masked_value": "W********d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 976,
+          "end_index": 986
+        }
+      ],
+      "source": "pastebin",
+      "source_type": "paste",
+      "url": "https://pastebin.com/Dkz7M5T7",
+      "timestamp": "2026-02-27T21:33:03.014494+00:00",
+      "author": null,
+      "metadata": {
+        "tags": [
+          "archive"
+        ]
+      },
+      "context_snippet": "4 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-1",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 28,
+          "end_index": 33
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 220,
+          "end_index": 225
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1085,
+          "end_index": 1090
+        },
+        {
+          "type": "person",
+          "raw_value": "Down",
+          "masked_value": "D**n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1330,
+          "end_index": 1334
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1589,
+          "end_index": 1594
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1931,
+          "end_index": 1936
+        },
+        {
+          "type": "person",
+          "raw_value": "Latitude",
+          "masked_value": "L******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1954,
+          "end_index": 1962
+        },
+        {
+          "type": "person",
+          "raw_value": "Longitude",
+          "masked_value": "L*******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1971,
+          "end_index": 1980
+        },
+        {
+          "type": "gpe",
+          "raw_value": "New Zealand",
+          "masked_value": "N*********d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2433,
+          "end_index": 2444
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Australia",
+          "masked_value": "A*******a",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2449,
+          "end_index": 2458
+        },
+        {
+          "type": "person",
+          "raw_value": "Down",
+          "masked_value": "D**n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2725,
+          "end_index": 2729
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2776,
+          "end_index": 2781
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3146,
+          "end_index": 3151
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Dinah",
+          "masked_value": "D***h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3510,
+          "end_index": 3515
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Dinah",
+          "masked_value": "D***h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3563,
+          "end_index": 3568
+        },
+        {
+          "type": "person",
+          "raw_value": "Alice",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3720,
+          "end_index": 3725
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Wonderland",
+          "masked_value": "W********d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3959,
+          "end_index": 3969
+        }
+      ],
+      "source": "pastebin",
+      "source_type": "paste",
+      "url": "https://pastebin.com/Y7AJRzQP",
+      "timestamp": "2026-02-27T21:33:05.247242+00:00",
+      "author": null,
+      "metadata": {
+        "tags": [
+          "archive"
+        ]
+      },
+      "context_snippet": "17 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-2",
+      "risk_score": 0.7,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Noah Jones",
+          "masked_value": "N********s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 28
+        },
+        {
+          "type": "org",
+          "raw_value": "TechGlobal",
+          "masked_value": "T********l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 43,
+          "end_index": 53
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "4111 3113 2932 4320",
+          "masked_value": "4*****************0",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 99,
+          "end_index": 118
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/e3f7a035",
+      "timestamp": "2026-02-27T10:39:05.254892Z",
+      "author": "@noahjones48",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "credit_card"
+        ]
+      },
+      "context_snippet": "3 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-3",
+      "risk_score": 1.0,
+      "severity": "critical",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Noah Brown",
+          "masked_value": "N********n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 28
+        },
+        {
+          "type": "org",
+          "raw_value": "Soylent Corp.",
+          "masked_value": "S***********.",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 43,
+          "end_index": 56
+        },
+        {
+          "type": "org",
+          "raw_value": "Aadhaar",
+          "masked_value": "A*****r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 80,
+          "end_index": 87
+        },
+        {
+          "type": "aadhaar",
+          "raw_value": "5773 4065 7521",
+          "masked_value": "5************1",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 94,
+          "end_index": 108
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/c0e5c511",
+      "timestamp": "2026-02-27T20:46:05.255098Z",
+      "author": "@noahbrown38",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "aadhaar"
+        ]
+      },
+      "context_snippet": "4 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-4",
+      "risk_score": 0.7,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Isabella Williams",
+          "masked_value": "I***************s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 35
+        },
+        {
+          "type": "org",
+          "raw_value": "Acme Corp.",
+          "masked_value": "A********.",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 50,
+          "end_index": 60
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "4111 4102 3531 1270",
+          "masked_value": "4*****************0",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 105,
+          "end_index": 124
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/bcbfae01",
+      "timestamp": "2026-02-27T18:16:05.255159Z",
+      "author": "@isabellawilliams79",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "credit_card"
+        ]
+      },
+      "context_snippet": "3 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-5",
+      "risk_score": 0.7,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Sophia Martinez",
+          "masked_value": "S*************z",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 33
+        },
+        {
+          "type": "org",
+          "raw_value": "Soylent Corp.",
+          "masked_value": "S***********.",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 48,
+          "end_index": 61
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "4111 4127 8180 7344",
+          "masked_value": "4*****************4",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 106,
+          "end_index": 125
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/112c12d8",
+      "timestamp": "2026-02-27T18:47:05.255331Z",
+      "author": "@sophiamartinez88",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "credit_card"
+        ]
+      },
+      "context_snippet": "3 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-6",
+      "risk_score": 0.8,
+      "severity": "critical",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "William Brown",
+          "masked_value": "W***********n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 31
+        },
+        {
+          "type": "org",
+          "raw_value": "Aadhaar",
+          "masked_value": "A*****r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 77,
+          "end_index": 84
+        },
+        {
+          "type": "aadhaar",
+          "raw_value": "5125 5702 8355",
+          "masked_value": "5************5",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 91,
+          "end_index": 105
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/aee546fc",
+      "timestamp": "2026-02-27T05:45:05.255389Z",
+      "author": "@williambrown57",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "aadhaar"
+        ]
+      },
+      "context_snippet": "3 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-7",
+      "risk_score": 0.2,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Sophia Smith",
+          "masked_value": "S**********h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 30
+        },
+        {
+          "type": "org",
+          "raw_value": "Initech",
+          "masked_value": "I*****h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 45,
+          "end_index": 52
+        },
+        {
+          "type": "phone",
+          "raw_value": "485-588-6085",
+          "masked_value": "4**********5",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 80,
+          "end_index": 92
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/660d5f0b",
+      "timestamp": "2026-02-27T09:37:05.255437Z",
+      "author": "@sophiasmith36",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "phone"
+        ]
+      },
+      "context_snippet": "3 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-8",
+      "risk_score": 1.0,
+      "severity": "critical",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "James Martinez",
+          "masked_value": "J************z",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 32
+        },
+        {
+          "type": "org",
+          "raw_value": "Initech",
+          "masked_value": "I*****h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 47,
+          "end_index": 54
+        },
+        {
+          "type": "org",
+          "raw_value": "Aadhaar",
+          "masked_value": "A*****r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 79,
+          "end_index": 86
+        },
+        {
+          "type": "aadhaar",
+          "raw_value": "4105 6935 1022",
+          "masked_value": "4************2",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 93,
+          "end_index": 107
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/bd2a3ee5",
+      "timestamp": "2026-02-27T06:30:05.255481Z",
+      "author": "@jamesmartinez89",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "aadhaar"
+        ]
+      },
+      "context_snippet": "4 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-9",
+      "risk_score": 1.0,
+      "severity": "critical",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Liam Martinez",
+          "masked_value": "L***********z",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 18,
+          "end_index": 31
+        },
+        {
+          "type": "org",
+          "raw_value": "Acme Corp.",
+          "masked_value": "A********.",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 46,
+          "end_index": 56
+        },
+        {
+          "type": "org",
+          "raw_value": "Aadhaar",
+          "masked_value": "A*****r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 80,
+          "end_index": 87
+        },
+        {
+          "type": "aadhaar",
+          "raw_value": "5290 6895 2581",
+          "masked_value": "5************1",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 94,
+          "end_index": 108
+        }
+      ],
+      "source": "social_media",
+      "source_type": "social",
+      "url": "https://social.dummy.local/post/c5936fd1",
+      "timestamp": "2026-02-27T16:35:05.255526Z",
+      "author": "@liammartinez49",
+      "metadata": {
+        "tags": [
+          "mock",
+          "social",
+          "aadhaar"
+        ]
+      },
+      "context_snippet": "4 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-10",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "BANR",
+          "masked_value": "B**R",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 51,
+          "end_index": 55
+        },
+        {
+          "type": "org",
+          "raw_value": "AUB",
+          "masked_value": "A*B",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 60,
+          "end_index": 63
+        },
+        {
+          "type": "org",
+          "raw_value": "INDB",
+          "masked_value": "I**B",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 77,
+          "end_index": 81
+        },
+        {
+          "type": "org",
+          "raw_value": "AUB",
+          "masked_value": "A*B",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 208,
+          "end_index": 211
+        },
+        {
+          "type": "org",
+          "raw_value": "INDB",
+          "masked_value": "I**B",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 225,
+          "end_index": 229
+        },
+        {
+          "type": "date",
+          "raw_value": "2",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 496,
+          "end_index": 497
+        },
+        {
+          "type": "date",
+          "raw_value": "3",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 499,
+          "end_index": 500
+        },
+        {
+          "type": "date",
+          "raw_value": "4",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 502,
+          "end_index": 503
+        },
+        {
+          "type": "date",
+          "raw_value": "5",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 505,
+          "end_index": 506
+        },
+        {
+          "type": "date",
+          "raw_value": "3",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 519,
+          "end_index": 520
+        },
+        {
+          "type": "date",
+          "raw_value": "4",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 522,
+          "end_index": 523
+        },
+        {
+          "type": "date",
+          "raw_value": "5",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 525,
+          "end_index": 526
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898133/why-does-str-value-evaluate-to-false-when-str-is-set-to-value",
+      "timestamp": "2026-02-27T21:13:23+00:00",
+      "author": "xXchristian_gencofan_200000Xx",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "12 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-11",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "date",
+          "raw_value": "Yesterday",
+          "masked_value": "Y*******y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 0,
+          "end_index": 9
+        },
+        {
+          "type": "person",
+          "raw_value": "Sunshine",
+          "masked_value": "S******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 22,
+          "end_index": 30
+        },
+        {
+          "type": "org",
+          "raw_value": "Flatpak",
+          "masked_value": "F*****k",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 35,
+          "end_index": 42
+        },
+        {
+          "type": "person",
+          "raw_value": "XFCE",
+          "masked_value": "X**E",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 62,
+          "end_index": 66
+        },
+        {
+          "type": "date",
+          "raw_value": "Today",
+          "masked_value": "T***y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 76,
+          "end_index": 81
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Tailscale",
+          "masked_value": "T*******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 142,
+          "end_index": 151
+        },
+        {
+          "type": "org",
+          "raw_value": "XFCE",
+          "masked_value": "X**E",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 255,
+          "end_index": 259
+        },
+        {
+          "type": "person",
+          "raw_value": "X11",
+          "masked_value": "X*1",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 487,
+          "end_index": 490
+        },
+        {
+          "type": "org",
+          "raw_value": "XFCE",
+          "masked_value": "X**E",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 597,
+          "end_index": 601
+        },
+        {
+          "type": "person",
+          "raw_value": "Sunshine",
+          "masked_value": "S******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 611,
+          "end_index": 619
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Reddit",
+          "masked_value": "R****t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 700,
+          "end_index": 706
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898132/sunshine-flatpak-on-pop-os-xfce-stuck-at-640x480-resolution-over-tailscale",
+      "timestamp": "2026-02-27T21:11:14+00:00",
+      "author": "user32429454",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "11 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-12",
+      "risk_score": 0.2,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "PowerShell",
+          "masked_value": "P********l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 89,
+          "end_index": 99
+        },
+        {
+          "type": "org",
+          "raw_value": "HTML",
+          "masked_value": "H**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 192,
+          "end_index": 196
+        },
+        {
+          "type": "org",
+          "raw_value": "PowerShell",
+          "masked_value": "P********l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 237,
+          "end_index": 247
+        },
+        {
+          "type": "org",
+          "raw_value": "\\\\$_.pdf",
+          "masked_value": "\\******f",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 590,
+          "end_index": 598
+        },
+        {
+          "type": "org",
+          "raw_value": "PDF",
+          "masked_value": "P*F",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 917,
+          "end_index": 920
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898131/using-powershell-and-wkhtmltopdf-to-output-to-pdf",
+      "timestamp": "2026-02-27T21:11:10+00:00",
+      "author": "mikev",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "5 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-13",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Raspberry Pi",
+          "masked_value": "R**********i",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 90,
+          "end_index": 102
+        },
+        {
+          "type": "person",
+          "raw_value": "Debian Bullseye",
+          "masked_value": "D*************e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 111,
+          "end_index": 126
+        },
+        {
+          "type": "person",
+          "raw_value": "// print_a_float.s",
+          "masked_value": "/****************s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 216,
+          "end_index": 234
+        },
+        {
+          "type": "person",
+          "raw_value": "mov x29",
+          "masked_value": "m*****9",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 400,
+          "end_index": 407
+        },
+        {
+          "type": "person",
+          "raw_value": "x0",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 425,
+          "end_index": 427
+        },
+        {
+          "type": "org",
+          "raw_value": "// Address",
+          "masked_value": "/********s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 441,
+          "end_index": 451
+        },
+        {
+          "type": "person",
+          "raw_value": "x0\n ",
+          "masked_value": "x** ",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 471,
+          "end_index": 475
+        },
+        {
+          "type": "person",
+          "raw_value": "mov x0",
+          "masked_value": "m****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 592,
+          "end_index": 598
+        },
+        {
+          "type": "org",
+          "raw_value": "ldp",
+          "masked_value": "l*p",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 617,
+          "end_index": 620
+        },
+        {
+          "type": "org",
+          "raw_value": "x30",
+          "masked_value": "x*0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 626,
+          "end_index": 629
+        },
+        {
+          "type": "org",
+          "raw_value": "GDB",
+          "masked_value": "G*B",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 694,
+          "end_index": 697
+        },
+        {
+          "type": "person",
+          "raw_value": "mov x29",
+          "masked_value": "m*****9",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1138,
+          "end_index": 1145
+        },
+        {
+          "type": "person",
+          "raw_value": "x0",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1180,
+          "end_index": 1182
+        },
+        {
+          "type": "person",
+          "raw_value": "x0",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1212,
+          "end_index": 1214
+        },
+        {
+          "type": "person",
+          "raw_value": "x0",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1286,
+          "end_index": 1288
+        },
+        {
+          "type": "person",
+          "raw_value": "mov x0",
+          "masked_value": "m****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1357,
+          "end_index": 1363
+        },
+        {
+          "type": "org",
+          "raw_value": "ldp",
+          "masked_value": "l*p",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1369,
+          "end_index": 1372
+        },
+        {
+          "type": "org",
+          "raw_value": "x30",
+          "masked_value": "x*0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1378,
+          "end_index": 1381
+        },
+        {
+          "type": "org",
+          "raw_value": "GDB",
+          "masked_value": "G*B",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1438,
+          "end_index": 1441
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898125/arm64-printing-a-float-obtained-via-scanf",
+      "timestamp": "2026-02-27T20:59:12+00:00",
+      "author": "Andrew H",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "19 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-14",
+      "risk_score": 0.2,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "gpe",
+          "raw_value": "Hamcrest",
+          "masked_value": "H******t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 362,
+          "end_index": 370
+        },
+        {
+          "type": "date",
+          "raw_value": "17.0f",
+          "masked_value": "1***f",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 372,
+          "end_index": 377
+        },
+        {
+          "type": "org",
+          "raw_value": "java.lang",
+          "masked_value": "j*******g",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 519,
+          "end_index": 528
+        },
+        {
+          "type": "gpe",
+          "raw_value": "is(closeTo(17.0",
+          "masked_value": "i*************0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 647,
+          "end_index": 662
+        },
+        {
+          "type": "gpe",
+          "raw_value": "hasItem(hasProperty",
+          "masked_value": "h*****************y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 766,
+          "end_index": 785
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898123/using-hamcrest-closeto-with-a-float",
+      "timestamp": "2026-02-27T20:58:10+00:00",
+      "author": "Troy Daniels",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "5 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-15",
+      "risk_score": 0.0,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "the Apple Developer Program",
+          "masked_value": "t*************************m",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 24,
+          "end_index": 51
+        },
+        {
+          "type": "org",
+          "raw_value": "Apple ID",
+          "masked_value": "A******D",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 196,
+          "end_index": 204
+        },
+        {
+          "type": "org",
+          "raw_value": "Apple",
+          "masked_value": "A***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 406,
+          "end_index": 411
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898118/apple-developer-program-enrollment-failed-your-enrollment-could-not-be-complet",
+      "timestamp": "2026-02-27T20:45:18+00:00",
+      "author": "yali",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "3 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-16",
+      "risk_score": 1.0,
+      "severity": "critical",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "macosx 10.13",
+          "masked_value": "m**********3",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 26,
+          "end_index": 38
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 610,
+          "end_index": 624
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 854,
+          "end_index": 868
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 919,
+          "end_index": 925
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 988,
+          "end_index": 1002
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1053,
+          "end_index": 1059
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1114,
+          "end_index": 1128
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1179,
+          "end_index": 1185
+        },
+        {
+          "type": "org",
+          "raw_value": "bin:/usr",
+          "masked_value": "b******r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1218,
+          "end_index": 1226
+        },
+        {
+          "type": "org",
+          "raw_value": "Homebrew/Library/Homebrew",
+          "masked_value": "H***********************w",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1233,
+          "end_index": 1258
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1738,
+          "end_index": 1752
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1803,
+          "end_index": 1809
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1942,
+          "end_index": 1956
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2007,
+          "end_index": 2013
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 2140,
+          "end_index": 2154
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2205,
+          "end_index": 2211
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 2334,
+          "end_index": 2348
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2399,
+          "end_index": 2405
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 2508,
+          "end_index": 2522
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2573,
+          "end_index": 2579
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 2670,
+          "end_index": 2684
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2735,
+          "end_index": 2741
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 2915,
+          "end_index": 2929
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2980,
+          "end_index": 2986
+        },
+        {
+          "type": "person",
+          "raw_value": "lib",
+          "masked_value": "l*b",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3027,
+          "end_index": 3030
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 3158,
+          "end_index": 3172
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3223,
+          "end_index": 3229
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 3320,
+          "end_index": 3334
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3385,
+          "end_index": 3391
+        },
+        {
+          "type": "org",
+          "raw_value": "blake3-bf8fb3eee317eacd",
+          "masked_value": "b*********************d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3432,
+          "end_index": 3455
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 3485,
+          "end_index": 3499
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3550,
+          "end_index": 3556
+        },
+        {
+          "type": "org",
+          "raw_value": "blake3-bf8fb3eee317eacd",
+          "masked_value": "b*********************d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3597,
+          "end_index": 3620
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 3650,
+          "end_index": 3664
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3715,
+          "end_index": 3721
+        },
+        {
+          "type": "credit_card",
+          "raw_value": "20260227-81377",
+          "masked_value": "2************7",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 3863,
+          "end_index": 3877
+        },
+        {
+          "type": "person",
+          "raw_value": "stage0",
+          "masked_value": "s****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3928,
+          "end_index": 3934
+        },
+        {
+          "type": "person",
+          "raw_value": "ZNSt3__119basic_ostringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEC1B8ne180100Ev",
+          "masked_value": "Z*********************************************************************************v",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 4360,
+          "end_index": 4443
+        },
+        {
+          "type": "person",
+          "raw_value": "ZNSt3__119basic_ostringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEC1B8ne180100Ev",
+          "masked_value": "Z*********************************************************************************v",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 5077,
+          "end_index": 5160
+        },
+        {
+          "type": "person",
+          "raw_value": "ZNSt3__119basic_ostringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEC1B8ne180100Ev",
+          "masked_value": "Z*********************************************************************************v",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 5662,
+          "end_index": 5745
+        },
+        {
+          "type": "org",
+          "raw_value": "ADT",
+          "masked_value": "A*T",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 6628,
+          "end_index": 6631
+        },
+        {
+          "type": "org",
+          "raw_value": "StringRef",
+          "masked_value": "S*******f",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 6651,
+          "end_index": 6660
+        },
+        {
+          "type": "org",
+          "raw_value": "*Data",
+          "masked_value": "****a",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7009,
+          "end_index": 7014
+        },
+        {
+          "type": "person",
+          "raw_value": "size_t Len",
+          "masked_value": "s********n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7016,
+          "end_index": 7026
+        },
+        {
+          "type": "person",
+          "raw_value": "Buf",
+          "masked_value": "B*f",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7111,
+          "end_index": 7114
+        },
+        {
+          "type": "org",
+          "raw_value": "StringRef",
+          "masked_value": "S*******f",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7123,
+          "end_index": 7132
+        },
+        {
+          "type": "org",
+          "raw_value": "CPU",
+          "masked_value": "C*U",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7258,
+          "end_index": 7261
+        },
+        {
+          "type": "org",
+          "raw_value": "Buf.str",
+          "masked_value": "B*****r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7348,
+          "end_index": 7355
+        },
+        {
+          "type": "org",
+          "raw_value": "OSX",
+          "masked_value": "O*X",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7674,
+          "end_index": 7677
+        },
+        {
+          "type": "org",
+          "raw_value": "CPU",
+          "masked_value": "C*U",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 7772,
+          "end_index": 7775
+        },
+        {
+          "type": "person",
+          "raw_value": "ZNSt3__119basic_ostringstreamIcNS_11char_traitsIcEENS_9allocatorIcEEEC1B8ne180100Ev",
+          "masked_value": "Z*********************************************************************************v",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 8035,
+          "end_index": 8118
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898114/how-to-build-rust-1-83-with-llvm18-on-macosx-10-13",
+      "timestamp": "2026-02-27T20:40:45+00:00",
+      "author": "Mouse",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "51 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-17",
+      "risk_score": 0.0,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "WeatherTool",
+          "masked_value": "W*********l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 5,
+          "end_index": 16
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898110/fs0072-lookup-of-object-of-indeterminate-type-a-type-annotation-may-be-neede",
+      "timestamp": "2026-02-27T20:30:44+00:00",
+      "author": "Alex 75",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "1 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-18",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "JavaScript",
+          "masked_value": "J********t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 63,
+          "end_index": 73
+        },
+        {
+          "type": "person",
+          "raw_value": "Multimeter",
+          "masked_value": "M********r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 252,
+          "end_index": 262
+        },
+        {
+          "type": "org",
+          "raw_value": "UI",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1176,
+          "end_index": 1178
+        },
+        {
+          "type": "org",
+          "raw_value": "MNA",
+          "masked_value": "M*A",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1271,
+          "end_index": 1274
+        },
+        {
+          "type": "org",
+          "raw_value": "AC",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1301,
+          "end_index": 1303
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898105/representing-wiring-and-measuring-currents-in-a-javascript-three-phase-motor-cir",
+      "timestamp": "2026-02-27T20:24:30+00:00",
+      "author": "Badr Eddine",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "5 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-19",
+      "risk_score": 0.0,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "gpe",
+          "raw_value": "AI",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 197,
+          "end_index": 199
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898104/conflict-between-library-using-python-programming-code",
+      "timestamp": "2026-02-27T20:22:20+00:00",
+      "author": "Rania Arcelan",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "1 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-20",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "ExamSchedule",
+          "masked_value": "E**********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 75,
+          "end_index": 87
+        },
+        {
+          "type": "org",
+          "raw_value": "ConstraintParameters",
+          "masked_value": "C******************s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 172,
+          "end_index": 192
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamAssignment",
+          "masked_value": "E************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 942,
+          "end_index": 956
+        },
+        {
+          "type": "org",
+          "raw_value": "RoomAssignment",
+          "masked_value": "R************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1185,
+          "end_index": 1199
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamAssignment",
+          "masked_value": "E************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1314,
+          "end_index": 1328
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamAssignment",
+          "masked_value": "E************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1331,
+          "end_index": 1345
+        },
+        {
+          "type": "org",
+          "raw_value": "RoomValue",
+          "masked_value": "R*******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1403,
+          "end_index": 1412
+        },
+        {
+          "type": "org",
+          "raw_value": "SupervisorAssignment",
+          "masked_value": "S******************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1489,
+          "end_index": 1509
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamAssignment",
+          "masked_value": "E************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1579,
+          "end_index": 1593
+        },
+        {
+          "type": "org",
+          "raw_value": "SupervisorValue",
+          "masked_value": "S*************e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1683,
+          "end_index": 1698
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamAssignment",
+          "masked_value": "E************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1805,
+          "end_index": 1819
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamSchedule",
+          "masked_value": "E**********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1901,
+          "end_index": 1913
+        },
+        {
+          "type": "org",
+          "raw_value": "ConstraintParameters",
+          "masked_value": "C******************s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2144,
+          "end_index": 2164
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamAssignment",
+          "masked_value": "E************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2919,
+          "end_index": 2933
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamAssignment",
+          "masked_value": "E************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3019,
+          "end_index": 3033
+        },
+        {
+          "type": "org",
+          "raw_value": "ExamSchedule",
+          "masked_value": "E**********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3252,
+          "end_index": 3264
+        },
+        {
+          "type": "org",
+          "raw_value": "RoomAssignment",
+          "masked_value": "R************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3535,
+          "end_index": 3549
+        },
+        {
+          "type": "person",
+          "raw_value": "AbstractSelector.phaseStarted(AbstractSelector.java:35",
+          "masked_value": "A****************************************************5",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 3874,
+          "end_index": 3928
+        },
+        {
+          "type": "person",
+          "raw_value": "AbstractSelector.phaseStarted(AbstractSelector.java:35",
+          "masked_value": "A****************************************************5",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 4236,
+          "end_index": 4290
+        },
+        {
+          "type": "person",
+          "raw_value": "AbstractSelector.phaseStarted(AbstractSelector.java:35",
+          "masked_value": "A****************************************************5",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 4459,
+          "end_index": 4513
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898101/planningentity-referencing-another-planningentity-and-valuerangeprovider-on-plan",
+      "timestamp": "2026-02-27T20:16:23+00:00",
+      "author": "FunkyFabe",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "20 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-21",
+      "risk_score": 0.2,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "None\n ",
+          "masked_value": "N**** ",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 291,
+          "end_index": 297
+        },
+        {
+          "type": "person",
+          "raw_value": "parser.parse_args",
+          "masked_value": "p***************s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 447,
+          "end_index": 464
+        },
+        {
+          "type": "org",
+          "raw_value": "print(\"LIST",
+          "masked_value": "p*********T",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 499,
+          "end_index": 510
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898095/argparse-inconsistent-results-with-nargs",
+      "timestamp": "2026-02-27T20:13:20+00:00",
+      "author": "BotWhisperer",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "3 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-22",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "ArrayList",
+          "masked_value": "A*******t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 221,
+          "end_index": 230
+        },
+        {
+          "type": "org",
+          "raw_value": "MyType",
+          "masked_value": "M****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 243,
+          "end_index": 249
+        },
+        {
+          "type": "person",
+          "raw_value": "JSON",
+          "masked_value": "J**N",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 270,
+          "end_index": 274
+        },
+        {
+          "type": "org",
+          "raw_value": "MyType",
+          "masked_value": "M****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 401,
+          "end_index": 407
+        },
+        {
+          "type": "org",
+          "raw_value": "MyType",
+          "masked_value": "M****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 729,
+          "end_index": 735
+        },
+        {
+          "type": "org",
+          "raw_value": "LinkedHashMap",
+          "masked_value": "L***********p",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 785,
+          "end_index": 798
+        },
+        {
+          "type": "person",
+          "raw_value": "Jackson",
+          "masked_value": "J*****n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 870,
+          "end_index": 877
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898093/hibernate-envers-ignores-jsondeserialize",
+      "timestamp": "2026-02-27T20:09:33+00:00",
+      "author": "Joern",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "7 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-23",
+      "risk_score": 0.0,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "VBA",
+          "masked_value": "V*A",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 323,
+          "end_index": 326
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898092/how-can-one-prevent-saving-an-excel-workbook",
+      "timestamp": "2026-02-27T20:07:32+00:00",
+      "author": "David I. McIntosh",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "1 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-24",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "date",
+          "raw_value": "31",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 291,
+          "end_index": 293
+        },
+        {
+          "type": "date",
+          "raw_value": "31",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 484,
+          "end_index": 486
+        },
+        {
+          "type": "date",
+          "raw_value": "5",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 549,
+          "end_index": 550
+        },
+        {
+          "type": "date",
+          "raw_value": "6",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 552,
+          "end_index": 553
+        },
+        {
+          "type": "date",
+          "raw_value": "7",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 555,
+          "end_index": 556
+        },
+        {
+          "type": "date",
+          "raw_value": "8",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 558,
+          "end_index": 559
+        },
+        {
+          "type": "date",
+          "raw_value": "9",
+          "masked_value": "*",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 561,
+          "end_index": 562
+        },
+        {
+          "type": "date",
+          "raw_value": "10",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 564,
+          "end_index": 566
+        },
+        {
+          "type": "date",
+          "raw_value": "11",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 568,
+          "end_index": 570
+        },
+        {
+          "type": "date",
+          "raw_value": "12",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 572,
+          "end_index": 574
+        },
+        {
+          "type": "date",
+          "raw_value": "13",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 576,
+          "end_index": 578
+        },
+        {
+          "type": "date",
+          "raw_value": "14",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 580,
+          "end_index": 582
+        },
+        {
+          "type": "date",
+          "raw_value": "15",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 584,
+          "end_index": 586
+        },
+        {
+          "type": "date",
+          "raw_value": "16",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 588,
+          "end_index": 590
+        },
+        {
+          "type": "date",
+          "raw_value": "17",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 592,
+          "end_index": 594
+        },
+        {
+          "type": "date",
+          "raw_value": "18",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 596,
+          "end_index": 598
+        },
+        {
+          "type": "date",
+          "raw_value": "19",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 600,
+          "end_index": 602
+        },
+        {
+          "type": "date",
+          "raw_value": "20",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 604,
+          "end_index": 606
+        },
+        {
+          "type": "date",
+          "raw_value": "21",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 608,
+          "end_index": 610
+        },
+        {
+          "type": "date",
+          "raw_value": "22",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 612,
+          "end_index": 614
+        },
+        {
+          "type": "date",
+          "raw_value": "23",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 616,
+          "end_index": 618
+        },
+        {
+          "type": "date",
+          "raw_value": "24",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 620,
+          "end_index": 622
+        },
+        {
+          "type": "date",
+          "raw_value": "25",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 624,
+          "end_index": 626
+        },
+        {
+          "type": "date",
+          "raw_value": "26",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 628,
+          "end_index": 630
+        },
+        {
+          "type": "date",
+          "raw_value": "27",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 632,
+          "end_index": 634
+        },
+        {
+          "type": "date",
+          "raw_value": "28",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 636,
+          "end_index": 638
+        },
+        {
+          "type": "date",
+          "raw_value": "29",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 640,
+          "end_index": 642
+        },
+        {
+          "type": "date",
+          "raw_value": "30",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 644,
+          "end_index": 646
+        },
+        {
+          "type": "date",
+          "raw_value": "31",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 648,
+          "end_index": 650
+        },
+        {
+          "type": "date",
+          "raw_value": "32",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 652,
+          "end_index": 654
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898090/can-i-use-a-list-comprehension-to-write-multiples-of-3-within-a-range-using-addi",
+      "timestamp": "2026-02-27T20:00:50+00:00",
+      "author": "Tommy_1978",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "30 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-25",
+      "risk_score": 0.0,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "date",
+          "raw_value": "2026",
+          "masked_value": "2**6",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 214,
+          "end_index": 218
+        },
+        {
+          "type": "date",
+          "raw_value": "2017",
+          "masked_value": "2**7",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 239,
+          "end_index": 243
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898083/why-in-msys2-nsswitch-conf-do-i-need-to-use-env-to-change-the-home-directory-t",
+      "timestamp": "2026-02-27T19:43:54+00:00",
+      "author": "Alessandro Bertulli",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "2 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-26",
+      "risk_score": 0.0,
+      "severity": "none",
+      "entities": [],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898082/direct2d-crash-during-initialization",
+      "timestamp": "2026-02-27T19:42:43+00:00",
+      "author": "Hari",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": ""
+    },
+    {
+      "incident_id": "inc-27",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "CC",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 41,
+          "end_index": 43
+        },
+        {
+          "type": "org",
+          "raw_value": "CC",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 119,
+          "end_index": 121
+        },
+        {
+          "type": "org",
+          "raw_value": "CC",
+          "masked_value": "**",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 174,
+          "end_index": 176
+        },
+        {
+          "type": "email",
+          "raw_value": "jane.doe@mailclient.com",
+          "masked_value": "j*********************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 325,
+          "end_index": 348
+        },
+        {
+          "type": "email",
+          "raw_value": "mike.drop@mailclient.com",
+          "masked_value": "m**********************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 369,
+          "end_index": 393
+        },
+        {
+          "type": "email",
+          "raw_value": "bob.johnson@mailclient.com",
+          "masked_value": "b************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 413,
+          "end_index": 439
+        },
+        {
+          "type": "email",
+          "raw_value": "crunch.buttsteak@mailclient.com",
+          "masked_value": "c*****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 442,
+          "end_index": 473
+        },
+        {
+          "type": "email",
+          "raw_value": "big.mclargehuge@mailclient.com",
+          "masked_value": "b****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 476,
+          "end_index": 506
+        },
+        {
+          "type": "email",
+          "raw_value": "flint.ironstag@mailclient.com",
+          "masked_value": "f***************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 526,
+          "end_index": 555
+        },
+        {
+          "type": "email",
+          "raw_value": "roll.fizzlebeef@mailclient.com",
+          "masked_value": "r****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 558,
+          "end_index": 588
+        },
+        {
+          "type": "email",
+          "raw_value": "beaker.honeydew@mailclient.com",
+          "masked_value": "b****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 798,
+          "end_index": 828
+        },
+        {
+          "type": "email",
+          "raw_value": "beaker.honeydew@mailclient.com",
+          "masked_value": "b****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1095,
+          "end_index": 1125
+        },
+        {
+          "type": "email",
+          "raw_value": "flint.ironstag@mailclient.com",
+          "masked_value": "f***************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1141,
+          "end_index": 1170
+        },
+        {
+          "type": "email",
+          "raw_value": "roll.fizzlebeef@mailclient.com",
+          "masked_value": "r****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1172,
+          "end_index": 1202
+        },
+        {
+          "type": "email",
+          "raw_value": "bob.johnson@mailclient.com",
+          "masked_value": "b************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1204,
+          "end_index": 1230
+        },
+        {
+          "type": "email",
+          "raw_value": "crunch.buttsteak@mailclient.com",
+          "masked_value": "c*****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1233,
+          "end_index": 1264
+        },
+        {
+          "type": "email",
+          "raw_value": "big.mclargehuge@mailclient.com",
+          "masked_value": "b****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1266,
+          "end_index": 1296
+        },
+        {
+          "type": "email",
+          "raw_value": "beaker.honeydew@mailclient.com",
+          "masked_value": "b****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1340,
+          "end_index": 1370
+        },
+        {
+          "type": "org",
+          "raw_value": "flint.ironstag@mailclient.com;roll.fizzlebeef@mailclient.com",
+          "masked_value": "f**********************************************************m",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1372,
+          "end_index": 1432
+        },
+        {
+          "type": "email",
+          "raw_value": "bob.johnson@mailclient.com",
+          "masked_value": "b************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1434,
+          "end_index": 1460
+        },
+        {
+          "type": "email",
+          "raw_value": "crunch.buttsteak@mailclient.com",
+          "masked_value": "c*****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1461,
+          "end_index": 1492
+        },
+        {
+          "type": "email",
+          "raw_value": "big.mclargehuge@mailclient.com",
+          "masked_value": "b****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1493,
+          "end_index": 1523
+        },
+        {
+          "type": "email",
+          "raw_value": "bob.johnson@mailclient.com",
+          "masked_value": "b************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1548,
+          "end_index": 1574
+        },
+        {
+          "type": "email",
+          "raw_value": "crunch.buttsteak@mailclient.com",
+          "masked_value": "c*****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1576,
+          "end_index": 1607
+        },
+        {
+          "type": "email",
+          "raw_value": "big.mclargehuge@mailclient.com",
+          "masked_value": "b****************************m",
+          "confidence": 0.9,
+          "detection_method": "regex",
+          "start_index": 1609,
+          "end_index": 1639
+        },
+        {
+          "type": "org",
+          "raw_value": "Microsoft Windows 11",
+          "masked_value": "M******************1",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1663,
+          "end_index": 1683
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898081/why-is-the-cc-property-overwritten-when-i-try-to-add-recipients-to-a-win32com-ob",
+      "timestamp": "2026-02-27T19:40:29+00:00",
+      "author": "SatelliteEyes_0401",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "26 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-28",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "Coil",
+          "masked_value": "C**l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 96,
+          "end_index": 100
+        },
+        {
+          "type": "person",
+          "raw_value": "Box { Image",
+          "masked_value": "B*********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 130,
+          "end_index": 141
+        },
+        {
+          "type": "org",
+          "raw_value": "AsyncImage",
+          "masked_value": "A********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 166,
+          "end_index": 176
+        },
+        {
+          "type": "org",
+          "raw_value": "CharactersList",
+          "masked_value": "C************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 379,
+          "end_index": 393
+        },
+        {
+          "type": "person",
+          "raw_value": "Modifier",
+          "masked_value": "M******r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 417,
+          "end_index": 425
+        },
+        {
+          "type": "org",
+          "raw_value": "LazyColumn",
+          "masked_value": "L********n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 560,
+          "end_index": 570
+        },
+        {
+          "type": "person",
+          "raw_value": "it.id",
+          "masked_value": "i***d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 761,
+          "end_index": 766
+        },
+        {
+          "type": "org",
+          "raw_value": "LoadState",
+          "masked_value": "L*******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 930,
+          "end_index": 939
+        },
+        {
+          "type": "person",
+          "raw_value": "Modifier\n .fillMaxWidth",
+          "masked_value": "M*********************h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 999,
+          "end_index": 1022
+        },
+        {
+          "type": "org",
+          "raw_value": "Modifier.background(Color",
+          "masked_value": "M***********************r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1126,
+          "end_index": 1151
+        },
+        {
+          "type": "org",
+          "raw_value": "ImageRequest",
+          "masked_value": "I**********t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1184,
+          "end_index": 1196
+        },
+        {
+          "type": "person",
+          "raw_value": "Modifier\n ",
+          "masked_value": "M******** ",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1413,
+          "end_index": 1423
+        },
+        {
+          "type": "org",
+          "raw_value": "CenterHorizontally",
+          "masked_value": "C****************y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1452,
+          "end_index": 1470
+        },
+        {
+          "type": "org",
+          "raw_value": "painterResource(R.drawable.ic_launcher_background",
+          "masked_value": "p***********************************************d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1579,
+          "end_index": 1628
+        },
+        {
+          "type": "person",
+          "raw_value": "Modifier\n//",
+          "masked_value": "M*********/",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1762,
+          "end_index": 1773
+        },
+        {
+          "type": "person",
+          "raw_value": "= Modifier.scale(0.5f",
+          "masked_value": "=*******************f",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1954,
+          "end_index": 1975
+        },
+        {
+          "type": "person",
+          "raw_value": "Modifier\n .fillMaxWidth",
+          "masked_value": "M*********************h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2008,
+          "end_index": 2031
+        },
+        {
+          "type": "org",
+          "raw_value": "TextAlign",
+          "masked_value": "T*******n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2087,
+          "end_index": 2096
+        },
+        {
+          "type": "org",
+          "raw_value": "TextUnitType",
+          "masked_value": "T**********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2161,
+          "end_index": 2173
+        },
+        {
+          "type": "person",
+          "raw_value": "Color",
+          "masked_value": "C***r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2188,
+          "end_index": 2193
+        },
+        {
+          "type": "org",
+          "raw_value": "White\n ",
+          "masked_value": "W***** ",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2194,
+          "end_index": 2201
+        },
+        {
+          "type": "person",
+          "raw_value": "Modifier\n .padding(top",
+          "masked_value": "M********************p",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2491,
+          "end_index": 2513
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898080/lazycolumn-fails-to-load-image-with-fast-scrolling",
+      "timestamp": "2026-02-27T19:37:51+00:00",
+      "author": "Cosmic Dev",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "22 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-29",
+      "risk_score": 0.2,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "person",
+          "raw_value": "Action Scheduler",
+          "masked_value": "A**************r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 73,
+          "end_index": 89
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898074/how-i-can-stop-action-scheduler-from-wordpress-pulgin",
+      "timestamp": "2026-02-27T19:19:20+00:00",
+      "author": "Aam Holilurrohman",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "1 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-30",
+      "risk_score": 0.2,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "gpe",
+          "raw_value": "Unicode",
+          "masked_value": "U*****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 325,
+          "end_index": 332
+        },
+        {
+          "type": "org",
+          "raw_value": "ASCII",
+          "masked_value": "A***I",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 738,
+          "end_index": 743
+        },
+        {
+          "type": "org",
+          "raw_value": "PUA",
+          "masked_value": "P*A",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 774,
+          "end_index": 777
+        },
+        {
+          "type": "org",
+          "raw_value": "CJK",
+          "masked_value": "C*K",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1099,
+          "end_index": 1102
+        },
+        {
+          "type": "org",
+          "raw_value": "Variation Selectors",
+          "masked_value": "V*****************s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1244,
+          "end_index": 1263
+        },
+        {
+          "type": "org",
+          "raw_value": "Unicode",
+          "masked_value": "U*****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1436,
+          "end_index": 1443
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898067/unicode-encoding-of-units-of-measure",
+      "timestamp": "2026-02-27T19:09:26+00:00",
+      "author": "W. Marshall",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "6 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-31",
+      "risk_score": 0.0,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "date",
+          "raw_value": "the last month",
+          "masked_value": "t************h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 21,
+          "end_index": 35
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898064/double-click-selects-partial-word-only-in-yaml-files",
+      "timestamp": "2026-02-27T19:00:24+00:00",
+      "author": "Jundarer",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "1 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-32",
+      "risk_score": 0.2,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "Microsoft",
+          "masked_value": "M*******t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 174,
+          "end_index": 183
+        },
+        {
+          "type": "org",
+          "raw_value": "PowerShell",
+          "masked_value": "P********l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 184,
+          "end_index": 194
+        },
+        {
+          "type": "org",
+          "raw_value": "Microsoft",
+          "masked_value": "M*******t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 303,
+          "end_index": 312
+        },
+        {
+          "type": "org",
+          "raw_value": "Microsoft",
+          "masked_value": "M*******t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 529,
+          "end_index": 538
+        },
+        {
+          "type": "org",
+          "raw_value": "SLA",
+          "masked_value": "S*A",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 686,
+          "end_index": 689
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898063/high-security-vulnerability-microsoft-powershell-native-v7-0-0",
+      "timestamp": "2026-02-27T18:59:39+00:00",
+      "author": "Vivek Nuna",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "5 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-33",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "PhotoImage",
+          "masked_value": "P********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 143,
+          "end_index": 153
+        },
+        {
+          "type": "org",
+          "raw_value": "Tkinter",
+          "masked_value": "T*****r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 159,
+          "end_index": 166
+        },
+        {
+          "type": "org",
+          "raw_value": "PhotoImage",
+          "masked_value": "P********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 517,
+          "end_index": 527
+        },
+        {
+          "type": "person",
+          "raw_value": "Skill Tree",
+          "masked_value": "S********e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 564,
+          "end_index": 574
+        },
+        {
+          "type": "person",
+          "raw_value": "False",
+          "masked_value": "F***e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 806,
+          "end_index": 811
+        },
+        {
+          "type": "gpe",
+          "raw_value": "width=25",
+          "masked_value": "w******5",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1165,
+          "end_index": 1173
+        },
+        {
+          "type": "person",
+          "raw_value": "Earthbender",
+          "masked_value": "E*********r",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1288,
+          "end_index": 1299
+        },
+        {
+          "type": "date",
+          "raw_value": "message_label.pack(pady=0",
+          "masked_value": "m***********************0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1370,
+          "end_index": 1395
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898061/when-using-photoimage-to-display-an-image-over-a-button-the-image-shrinks-the-s",
+      "timestamp": "2026-02-27T18:56:34+00:00",
+      "author": "BrozzyBoi",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "8 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-34",
+      "risk_score": 0.0,
+      "severity": "low",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "RPC",
+          "masked_value": "R*C",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 19,
+          "end_index": 22
+        },
+        {
+          "type": "date",
+          "raw_value": "resp_required_param",
+          "masked_value": "r*****************m",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1040,
+          "end_index": 1059
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898059/go-rpc-streaming-send-not-working-properly-when-optional-values-not-provided",
+      "timestamp": "2026-02-27T18:54:09+00:00",
+      "author": "NumberOneRobot",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "2 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-35",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "Microsoft",
+          "masked_value": "M*******t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 149,
+          "end_index": 158
+        },
+        {
+          "type": "person",
+          "raw_value": "Project Sdk=\"Microsoft",
+          "masked_value": "P********************t",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 723,
+          "end_index": 745
+        },
+        {
+          "type": "org",
+          "raw_value": "WebAssembly",
+          "masked_value": "W*********y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 754,
+          "end_index": 765
+        },
+        {
+          "type": "person",
+          "raw_value": "Json",
+          "masked_value": "J**n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1002,
+          "end_index": 1006
+        },
+        {
+          "type": "person",
+          "raw_value": "JSON",
+          "masked_value": "J**N",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1456,
+          "end_index": 1460
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898054/how-can-i-reduce-the-size-of-net-webassembly-assets",
+      "timestamp": "2026-02-27T18:45:02+00:00",
+      "author": "Qwertie",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "5 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-36",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "DataFrame",
+          "masked_value": "D*******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 79,
+          "end_index": 88
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Poland",
+          "masked_value": "P****d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 105,
+          "end_index": 111
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Poland",
+          "masked_value": "P****d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 115,
+          "end_index": 121
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Poland",
+          "masked_value": "P****d",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 125,
+          "end_index": 131
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Germany",
+          "masked_value": "G*****y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 136,
+          "end_index": 143
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Germany",
+          "masked_value": "G*****y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 147,
+          "end_index": 154
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Germany",
+          "masked_value": "G*****y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 158,
+          "end_index": 165
+        },
+        {
+          "type": "gpe",
+          "raw_value": "France",
+          "masked_value": "F****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 170,
+          "end_index": 176
+        },
+        {
+          "type": "gpe",
+          "raw_value": "France",
+          "masked_value": "F****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 180,
+          "end_index": 186
+        },
+        {
+          "type": "gpe",
+          "raw_value": "France",
+          "masked_value": "F****e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 190,
+          "end_index": 196
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Warsaw",
+          "masked_value": "W****w",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 211,
+          "end_index": 217
+        },
+        {
+          "type": "person",
+          "raw_value": "Krakow",
+          "masked_value": "K****w",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 221,
+          "end_index": 227
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Berlin",
+          "masked_value": "B****n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 242,
+          "end_index": 248
+        },
+        {
+          "type": "person",
+          "raw_value": "Munich",
+          "masked_value": "M****h",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 252,
+          "end_index": 258
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Nuremberg",
+          "masked_value": "N*******g",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 262,
+          "end_index": 271
+        },
+        {
+          "type": "gpe",
+          "raw_value": "Paris",
+          "masked_value": "P***s",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 276,
+          "end_index": 281
+        },
+        {
+          "type": "person",
+          "raw_value": "Marseille",
+          "masked_value": "M*******e",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 285,
+          "end_index": 294
+        },
+        {
+          "type": "date",
+          "raw_value": "1863000, 803000,",
+          "masked_value": "1**************,",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 323,
+          "end_index": 339
+        },
+        {
+          "type": "date",
+          "raw_value": "470000",
+          "masked_value": "4****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 340,
+          "end_index": 346
+        },
+        {
+          "type": "date",
+          "raw_value": "3769000, 1488000",
+          "masked_value": "3**************0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 349,
+          "end_index": 365
+        },
+        {
+          "type": "date",
+          "raw_value": "518000",
+          "masked_value": "5****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 367,
+          "end_index": 373
+        },
+        {
+          "type": "date",
+          "raw_value": "2103000, 877000",
+          "masked_value": "2*************0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 376,
+          "end_index": 391
+        },
+        {
+          "type": "date",
+          "raw_value": "140000",
+          "masked_value": "1****0",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 393,
+          "end_index": 399
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898053/histogram-title-in-facetted-histogram-in-plotly-express-contains-label",
+      "timestamp": "2026-02-27T18:43:52+00:00",
+      "author": "ignacy pernacy",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "23 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-37",
+      "risk_score": 0.6,
+      "severity": "high",
+      "entities": [
+        {
+          "type": "org",
+          "raw_value": "SSL",
+          "masked_value": "S*L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 266,
+          "end_index": 269
+        },
+        {
+          "type": "org",
+          "raw_value": "SSLConnection",
+          "masked_value": "S***********n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 620,
+          "end_index": 633
+        },
+        {
+          "type": "person",
+          "raw_value": "mysql_init(NULL",
+          "masked_value": "m*************L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 652,
+          "end_index": 667
+        },
+        {
+          "type": "person",
+          "raw_value": "conn",
+          "masked_value": "c**n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 677,
+          "end_index": 681
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 818,
+          "end_index": 822
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 824,
+          "end_index": 828
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 830,
+          "end_index": 834
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 836,
+          "end_index": 840
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 842,
+          "end_index": 846
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_options(conn",
+          "masked_value": "m****************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 872,
+          "end_index": 890
+        },
+        {
+          "type": "gpe",
+          "raw_value": "MYSQL_OPT_SSL_ENFORCE",
+          "masked_value": "M*******************E",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 892,
+          "end_index": 913
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_options(conn",
+          "masked_value": "m****************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 980,
+          "end_index": 998
+        },
+        {
+          "type": "gpe",
+          "raw_value": "MYSQL_OPT_SSL_ENFORCE",
+          "masked_value": "M*******************E",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1000,
+          "end_index": 1021
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1073,
+          "end_index": 1077
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1079,
+          "end_index": 1083
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1085,
+          "end_index": 1089
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1091,
+          "end_index": 1095
+        },
+        {
+          "type": "org",
+          "raw_value": "NULL",
+          "masked_value": "N**L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1097,
+          "end_index": 1101
+        },
+        {
+          "type": "org",
+          "raw_value": "SQL",
+          "masked_value": "S*L",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1359,
+          "end_index": 1362
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_error(conn",
+          "masked_value": "m**************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1369,
+          "end_index": 1385
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_query(conn",
+          "masked_value": "m**************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1700,
+          "end_index": 1716
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_error(conn",
+          "masked_value": "m**************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1788,
+          "end_index": 1804
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_select_db(conn",
+          "masked_value": "m******************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1871,
+          "end_index": 1891
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_error(conn",
+          "masked_value": "m**************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 1969,
+          "end_index": 1985
+        },
+        {
+          "type": "org",
+          "raw_value": "INT",
+          "masked_value": "I*T",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2246,
+          "end_index": 2249
+        },
+        {
+          "type": "person",
+          "raw_value": "VARCHAR(255",
+          "masked_value": "V*********5",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2287,
+          "end_index": 2298
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_query(conn",
+          "masked_value": "m**************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2350,
+          "end_index": 2366
+        },
+        {
+          "type": "gpe",
+          "raw_value": "mysql_error(conn",
+          "masked_value": "m**************n",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 2435,
+          "end_index": 2451
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898043/program-in-gnu-gcc-error-access-database-sql-tls-ssl-error-ssl-is-required-b",
+      "timestamp": "2026-02-27T18:32:35+00:00",
+      "author": "Sever",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "28 sensitive entities detected in document."
+    },
+    {
+      "incident_id": "inc-38",
+      "risk_score": 0.0,
+      "severity": "none",
+      "entities": [],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898023/mysql-group-by-select-a-single-value-from-a-group",
+      "timestamp": "2026-02-27T18:11:16+00:00",
+      "author": "nathlrowe",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": ""
+    },
+    {
+      "incident_id": "inc-39",
+      "risk_score": 0.4,
+      "severity": "medium",
+      "entities": [
+        {
+          "type": "gpe",
+          "raw_value": "Jekyll",
+          "masked_value": "J****l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 108,
+          "end_index": 114
+        },
+        {
+          "type": "person",
+          "raw_value": "Jekyll\n ",
+          "masked_value": "J****** ",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 197,
+          "end_index": 205
+        },
+        {
+          "type": "person",
+          "raw_value": "Generator\n ",
+          "masked_value": "G********* ",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 243,
+          "end_index": 254
+        },
+        {
+          "type": "org",
+          "raw_value": "FILE",
+          "masked_value": "F**E",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 353,
+          "end_index": 357
+        },
+        {
+          "type": "org",
+          "raw_value": "the \"Programming Ruby",
+          "masked_value": "t*******************y",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 497,
+          "end_index": 518
+        },
+        {
+          "type": "person",
+          "raw_value": "Jekyll",
+          "masked_value": "J****l",
+          "confidence": 0.8,
+          "detection_method": "nlp",
+          "start_index": 651,
+          "end_index": 657
+        }
+      ],
+      "source": "stackoverflow",
+      "source_type": "forum_post",
+      "url": "https://stackoverflow.com/questions/79898022/why-are-things-magically-available-in-the-current-scope-in-a-ruby-script-in-jeky",
+      "timestamp": "2026-02-27T18:08:54+00:00",
+      "author": "Quentin",
+      "metadata": {
+        "tags": [
+          "stackoverflow",
+          "code"
+        ]
+      },
+      "context_snippet": "6 sensitive entities detected in document."
+    }
+  ],
+  "format": "json"
+}

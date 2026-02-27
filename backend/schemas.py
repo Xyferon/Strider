@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Literal
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, conint, confloat
 
@@ -77,6 +77,7 @@ class ScanTriggerResponseV1(BaseModel):
     """
 
     message: Literal["Scan completed"] = "Scan completed"
+    target: Optional[str] = None
     incidents_found: int
     scan_timestamp: datetime
 
@@ -130,4 +131,18 @@ class MetricsResponseV1(BaseModel):
     high: int
     medium: int
     low: int
+
+
+class IdentityAggregateItemV1(BaseModel):
+    """
+    Identity-centric aggregation item for GET /identities.
+    """
+
+    email: str
+    domain: str
+    occurrences: int
+    max_risk_score: conint(ge=0, le=100)
+    highest_severity: Severity
+    last_seen: datetime
+    related_incident_ids: List[str]
 
