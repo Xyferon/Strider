@@ -85,17 +85,34 @@ cp .env.example .env
 # Edit .env with your API tokens and settings
 ```
 
-### Running the Application
+### Running the Application (Live Web Dashboard)
+
+The easiest way to use Strider is via the interactive web dashboard.
+
+1. Start the Live FastAPI server:
+```bash
+python api.py
+```
+2. Open your browser and navigate to the local dashboard:
+**http://localhost:8080/**
+
+From here, you can type any target domain into the "Target Scan" input and the backend will dynamically scrape your target and update the UI live!
+
+### Running the Application (Command Line)
+
+If you prefer to run scans directly via the terminal:
 
 ```bash
-python app.py
-python integration_check.py
+# Run a specific scan target
+python app.py --domain="techglobal"
+
+# Generate the HTML dashboard specifically for this data
 python generate_dashboard.py
 ```
 
 ### Running Detection Accuracy Demo
 
-To review the detection and classification accuracy on known data samples, run:
+To review the detection and classification accuracy on known data samples without web scraping:
 ```bash
 python demo.py
 ```
