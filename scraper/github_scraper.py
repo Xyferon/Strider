@@ -138,7 +138,7 @@ def scrape_github() -> list[dict]:
     documents: list[dict] = []
 
     for keyword in config.GITHUB_SEARCH_KEYWORDS:
-        logger.info(f"── Searching GitHub for: '{keyword}' ──")
+        logger.info(f"Searching GitHub for: '{keyword}'")
         items = _search_code(keyword, headers, limiter)
 
         for item in items:

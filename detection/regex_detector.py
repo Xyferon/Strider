@@ -4,46 +4,69 @@ Detects PII using predefined regex patterns.
 """
 
 import re
+from typing import List, Dict, Any
+
 from utils.logger import get_logger
 
 logger = get_logger("regex_detector")
 
+
+def _mask(value: str) -> str:
+    """
+    Simple masking helper: keep first and last character if possible,
+    mask the middle.
+    """
+    if not value:
+        return ""
+    if len(value) <= 2:
+        return "*" * len(value)
+    return value[0] + "*" * (len(value) - 2) + value[-1]
+
+
 class RegexDetector:
     """Regex-based PII detector."""
-    
-    def __init__(self):
+
+    def __init__(self) -> None:
         """Initialize regex patterns for PII detection."""
         self.patterns = {
-            "EMAIL": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
-            "PHONE": r"(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}",
-            "AADHAAR": r"\b\d{4}\s\d{4}\s\d{4}\b",
-            "PAN": r"\b[A-Z]{5}[0-9]{4}[A-Z]{1}\b",
-            "CREDIT_CARD": r"\b(?:\d[ -]*?){13,16}\b",
-            "IP_ADDRESS": r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
+            "email": r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}",
+            "phone": r"(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}",
+            "aadhaar": r"\b\d{4}\s\d{4}\s\d{4}\b",
+            "pan": r"\b[A-Z]{5}[0-9]{4}[A-Z]{1}\b",
+            "credit_card": r"\b(?:\d[ -]*?){13,16}\b",
+            "ip_address": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
         }
-    
-    def detect(self, text: str) -> list:
+
+    def detect(self, text: str) -> List[Dict[str, Any]]:
         """
         Detect PII in text using regex patterns.
-        
-        Args:
-            text: Input text to analyze
-            
-        Returns:
-            List of detected PII matches with their details
+
+        Returns a list of entities following the shared detection schema:
+        - type
+        - masked_value
+        - confidence
+        - detection_method
+        - start_index
+        - end_index
         """
-        results = []
+        if not text:
+            return []
+
+        results: List[Dict[str, Any]] = []
         for pii_type, pattern in self.patterns.items():
-            matches = re.finditer(pattern, text)
-            for match in matches:
-                results.append({
-                    "text": match.group(),
-                    "type": pii_type,
-                    "start": match.start(),
-                    "end": match.end(),
-                    "method": "regex"
-                })
-        
+            for match in re.finditer(pattern, text):
+                value = match.group()
+                results.append(
+                    {
+                        "type": pii_type,
+                        "masked_value": _mask(value),
+                        "confidence": 0.9,
+                        "detection_method": "regex",
+                        "start_index": match.start(),
+                        "end_index": match.end(),
+                    }
+                )
+
         logger.info(f"Regex detection completed for text ({len(text)} chars)")
         return results
 

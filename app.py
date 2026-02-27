@@ -23,13 +23,13 @@ logger = get_logger("main")
 def main():
     start = time.time()
     logger.info("=" * 60)
-    logger.info("PII Leakage Scanner — Data Acquisition Layer")
+    logger.info("PII Leakage Scanner - Data Acquisition Layer")
     logger.info("=" * 60)
 
     all_documents: list[dict] = []
 
-    # ── 1. GitHub Scraper ───────────────────────────────────────────────
-    logger.info("─── Phase 1: GitHub Scraping ───")
+    # 1. GitHub Scraper
+    logger.info("--- Phase 1: GitHub Scraping ---")
     try:
         github_docs = scrape_github()
         all_documents.extend(github_docs)
@@ -37,8 +37,8 @@ def main():
     except Exception as exc:
         logger.error(f"GitHub scraper crashed: {exc}")
 
-    # ── 2. Pastebin Scraper ─────────────────────────────────────────────
-    logger.info("─── Phase 2: Pastebin Scraping ───")
+    # 2. Pastebin Scraper
+    logger.info("--- Phase 2: Pastebin Scraping ---")
     try:
         pastebin_docs = scrape_pastebin()
         all_documents.extend(pastebin_docs)
@@ -46,8 +46,8 @@ def main():
     except Exception as exc:
         logger.error(f"Pastebin scraper crashed: {exc}")
 
-    # ── 3. Deduplication ────────────────────────────────────────────────
-    logger.info("─── Phase 3: Deduplication ───")
+    # 3. Deduplication
+    logger.info("--- Phase 3: Deduplication ---")
     dedup = Deduplicator()
     unique_documents: list[dict] = []
 
@@ -70,7 +70,7 @@ def main():
 
     elapsed = time.time() - start
 
-    # ── Summary ─────────────────────────────────────────────────────────
+    # Summary
     logger.info("=" * 60)
     logger.info("SUMMARY")
     logger.info(f"  Total collected  : {len(all_documents)}")
