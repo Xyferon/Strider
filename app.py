@@ -55,12 +55,7 @@ def run_full_scan(domain: str = None) -> list[dict]:
 
     # 3. Social Media Scraper
     logger.info("--- Phase 3: Social Media Scraping ---")
-    try:
-        social_docs = scrape_social_media()
-        all_documents.extend(social_docs)
-        logger.info(f"Social Media: {len(social_docs)} documents collected")
-    except Exception as exc:
-        logger.error(f"Social Media scraper crashed: {exc}")
+    logger.info("Social media scraping is currently disabled (mock data removed).")
 
     # 4. StackOverflow Scraper
     logger.info("--- Phase 4: StackOverflow Scraping ---")

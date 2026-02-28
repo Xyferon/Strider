@@ -31,9 +31,12 @@ GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "").strip()
 
 GITHUB_SEARCH_KEYWORDS = [
     "password",
+    "token",
+    "secret",
+    "credentials",
 ]
 
-GITHUB_RESULTS_PER_KEYWORD = int(os.getenv("GITHUB_RESULTS_PER_KEYWORD", "2"))
+GITHUB_RESULTS_PER_KEYWORD = int(os.getenv("GITHUB_RESULTS_PER_KEYWORD", "10"))
 GITHUB_MAX_REQUESTS_PER_MINUTE = int(os.getenv("GITHUB_MAX_REQUESTS_PER_MINUTE", "20"))
 GITHUB_RATE_WINDOW_SECONDS = int(os.getenv("GITHUB_RATE_WINDOW_SECONDS", "60"))
 
@@ -54,7 +57,7 @@ PASTEBIN_RAW_URL_TEMPLATE = os.getenv(
     "https://pastebin.com/raw/{paste_id}",
 )
 
-PASTEBIN_MAX_PASTES = int(os.getenv("PASTEBIN_MAX_PASTES", "2"))
+PASTEBIN_MAX_PASTES = int(os.getenv("PASTEBIN_MAX_PASTES", "10"))
 
 PASTEBIN_DELAY_MIN = float(os.getenv("PASTEBIN_DELAY_MIN", "0.5"))
 PASTEBIN_DELAY_MAX = float(os.getenv("PASTEBIN_DELAY_MAX", "1.5"))

@@ -1,643 +1,978 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strider | PII Leakage Dashboard</title>
-    <!-- Modern Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>STRIDER | Investigation Console</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
+            /* Global Colors */
+            --bg-dark: #0b1220;
+            --bg-card: #141d2d;
+            --bg-panel: #111827;
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
-            --accent: #3b82f6;
+            --border: #1e293b;
+
+            /* Severities */
             --critical: #ef4444;
+            /* Red */
             --high: #f97316;
-            --medium: #eab308;
-            --low: #3b82f6;
-            --none: #0ea5e9;
+            /* Orange */
+            --medium: #3b82f6;
+            /* Blue */
+            --low: #64748b;
+            /* Slate */
+            --none: #475569;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
             min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.5;
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* --- Top Bar & Header --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        h1 {
-            font-size: 2rem;
+        .brand h1 {
+            font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-primary);
         }
 
-        .controls { display: flex; gap: 1rem; }
+        .brand span {
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-left: 0.5rem;
+        }
+
+        .scan-controls {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
 
         input[type="text"] {
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.05);
-            color: white;
+            padding: 0.75rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            width: 300px;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            width: 320px;
+            transition: border-color 0.2s;
         }
-        input[type="text"]:focus { outline: none; border-color: var(--accent); background: rgba(255,255,255,0.1); }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--text-secondary);
+        }
 
         button {
             padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            border: none;
-            background: var(--accent);
-            color: white;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
+            border: none;
+            transition: filter 0.2s;
         }
-        button:hover { transform: translateY(-2px); background: #2563eb; }
 
-        /* Heatmap Section */
-        .heatmap-container {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            margin-bottom: 2rem;
+        button:hover {
+            filter: brightness(1.1);
         }
-        .heatmap-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+
+        .btn-scan {
+            background-color: var(--critical);
+            color: white;
+        }
+
+        .btn-download {
+            background-color: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+
+        .btn-download:hover {
+            color: var(--text-primary);
+            border-color: var(--text-secondary);
+        }
+
+        .system-status {
+            text-align: right;
+            font-size: 0.85rem;
             color: var(--text-secondary);
         }
-        .heatmap-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            gap: 10px;
-        }
-        .heatmap-cell {
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            background: rgba(255,255,255,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            transition: transform 0.2s;
-        }
-        .heatmap-cell:hover { transform: scale(1.05); }
-        .heatmap-label { font-size: 0.7rem; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.25rem; font-weight: 600; }
-        .heatmap-val { font-size: 1.5rem; font-weight: 800; }
 
-        /* Color intensities for heatmap based on risk weighting */
-        .intensity-high { background: rgba(239, 68, 68, 0.2); color: var(--critical); border: 1px solid var(--critical); }
-        .intensity-medium { background: rgba(234, 179, 8, 0.2); color: var(--medium); border: 1px solid var(--medium); }
-        .intensity-low { background: rgba(59, 130, 246, 0.2); color: var(--low); border: 1px solid var(--low); }
-        .intensity-none { background: rgba(255,255,255,0.05); color: var(--text-secondary); }
-
-        /* Victim List */
-        .list-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .list-item {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .list-item:hover {
-            background: rgba(255,255,255,0.03);
-            border-color: rgba(255,255,255,0.2);
-            transform: translateX(5px);
-        }
-
-        .list-item::before { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 4px; }
-        .list-item[data-severity="critical"]::before { background: var(--critical); }
-        .list-item[data-severity="high"]::before { background: var(--high); }
-        .list-item[data-severity="medium"]::before { background: var(--medium); }
-        .list-item[data-severity="low"]::before { background: var(--low); }
-        .list-item[data-severity="none"]::before { background: var(--none); }
-
-        .list-info { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-        .list-name { font-size: 1.1rem; font-weight: 600; color: white; min-width: 200px; }
-        .list-meta { font-size: 0.85rem; color: var(--text-secondary); }
-        .list-action { font-size: 0.85rem; color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
-
-        /* Speedometer Gauge */
-        .gauge {
-            position: relative;
-            width: 140px;
-            height: 70px;
-            overflow: hidden;
-            flex-shrink: 0;
-            margin-bottom: 0.5rem;
-        }
-        .gauge-bg, .gauge-fill {
-            position: absolute;
-            top: 0; left: 0;
-            width: 140px; height: 140px;
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
             border-radius: 50%;
-            box-sizing: border-box;
-            border: 14px solid rgba(255,255,255,0.1);
-            border-bottom-color: transparent;
-            border-right-color: transparent;
-            transform: rotate(-45deg);
+            margin-right: 0.5rem;
         }
-        .gauge-fill {
-            border-color: var(--gauge-color, var(--accent)) var(--gauge-color, var(--accent)) transparent transparent;
-            transform: rotate(-225deg); /* 0% */
-            transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+
+        /* --- Sub Header / Search --- */
+        .sub-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .gauge-center {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: white;
-            line-height: 1;
+
+        .search-controls input {
+            width: 400px;
         }
-        
-        .badge {
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
+
+        /* --- Severity Distribution Panel --- */
+        .distribution-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+        }
+
+        .dist-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
+            color: var(--text-secondary);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dist-bar-wrapper {
+            display: flex;
+            height: 12px;
+            width: 100%;
+            background: var(--bg-dark);
+            margin-bottom: 1rem;
+        }
+
+        .dist-segment {
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .dist-stats {
+            display: flex;
+            gap: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .dist-stats span {
+            color: var(--text-secondary);
+            font-family: 'Inter', sans-serif;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* --- Identity Cards --- */
+        .investigation-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .case-card {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .case-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.03);
+        }
+
+        .severity-strip {
+            width: 6px;
+            flex-shrink: 0;
+            background-color: var(--none);
+        }
+
+        .severity-strip.critical {
+            background-color: var(--critical);
+        }
+
+        .severity-strip.high {
+            background-color: var(--high);
+        }
+
+        .severity-strip.medium {
+            background-color: var(--medium);
+        }
+
+        .severity-strip.low {
+            background-color: var(--low);
+        }
+
+        .card-content {
+            padding: 1.25rem 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .card-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .card-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+        }
+
+        .card-score.critical {
+            color: var(--critical);
+            border-color: var(--critical);
+        }
+
+        .card-score.high {
+            color: var(--high);
+            border-color: var(--high);
+        }
+
+        .card-score.medium {
+            color: var(--medium);
+            border-color: var(--medium);
+        }
+
+        .card-score.low {
+            color: var(--low);
+            border-color: var(--low);
+        }
+
+        .card-mid {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .card-mid strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .card-bottom {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-sources {
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             font-size: 0.75rem;
         }
 
-        .badge.critical { background: rgba(239, 68, 68, 0.2); color: var(--critical); }
-        .badge.high { background: rgba(249, 115, 22, 0.2); color: var(--high); }
-        .badge.medium { background: rgba(234, 179, 8, 0.2); color: var(--medium); }
-        .badge.low { background: rgba(59, 130, 246, 0.2); color: var(--low); }
-        .badge.none { background: rgba(14, 165, 233, 0.2); color: var(--none); }
+        .chevron {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
 
-        .empty-state { text-align: center; padding: 4rem; color: var(--text-secondary); font-size: 1.2rem; grid-column: 1 / -1; }
-
-        /* Modal Styles */
-        .modal-overlay {
+        /* --- Slide Panel --- */
+        .slide-panel-overlay {
             position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(4px);
-            display: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(2px);
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .slide-panel-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-panel {
+            position: fixed;
+            top: 0;
+            right: -600px;
+            width: 100%;
+            max-width: 600px;
+            height: 100vh;
+            background: var(--bg-panel);
+            border-left: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-panel.active {
+            right: 0;
+        }
+
+        .panel-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .panel-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .panel-close:hover {
+            color: var(--text-primary);
+        }
+
+        .panel-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            word-break: break-all;
+        }
+
+        .panel-metrics {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .panel-score {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .panel-severity {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border: 1px solid;
+            letter-spacing: 1px;
+        }
+
+        .panel-severity.critical {
+            color: var(--critical);
+            border-color: var(--critical);
+        }
+
+        .panel-severity.high {
+            color: var(--high);
+            border-color: var(--high);
+        }
+
+        .panel-severity.medium {
+            color: var(--medium);
+            border-color: var(--medium);
+        }
+
+        .panel-severity.low {
+            color: var(--low);
+            border-color: var(--low);
+        }
+
+        .panel-body {
+            padding: 2rem;
+            overflow-y: auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            border-left: 1px solid var(--border);
+            margin-left: 0.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.8rem;
+            top: 0.3rem;
+            width: 8px;
+            height: 8px;
+            background: var(--low);
+            border-radius: 50%;
+        }
+
+        .timeline-time {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content {
+            font-size: 0.9rem;
+        }
+
+        .timeline-content a {
+            color: var(--low);
+            text-decoration: none;
+        }
+
+        .timeline-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        td.entity-type {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        /* Loading Overlay */
+        .loader-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 18, 32, 0.8);
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
+            visibility: hidden;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.2s;
         }
-        
-        .modal-overlay.active {
-            display: flex;
+
+        .loader-overlay.active {
+            visibility: visible;
             opacity: 1;
         }
 
-        .modal-content {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.3s ease;
-        }
-        
-        .modal-overlay.active .modal-content { transform: scale(1); }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem; right: 1.5rem;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
-        .modal-close:hover { color: white; }
-
-        .modal-header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .modal-title { font-size: 1.5rem; font-weight: 600; color: white; margin-bottom: 0.5rem; word-break: break-all; }
-
-        .entity-list {
-            list-style: none;
-            overflow-y: auto;
-            flex-grow: 1;
-            padding-right: 0.5rem;
-        }
-        
-        .entity-list::-webkit-scrollbar { width: 6px; }
-        .entity-list::-webkit-scrollbar-track { background: transparent; }
-        .entity-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
-
-        .entity-item {
+        .loader-text {
+            margin-top: 1rem;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.5rem;
-            background: rgba(255,255,255,0.02);
-            border-radius: 6px;
+            color: var(--text-primary);
         }
-
-        .entity-type { color: var(--accent); font-weight: 600; font-size: 0.75rem; min-width: 80px; }
-        .entity-value { color: var(--text-primary); font-family: monospace; }
-        .entity-context { font-size: 0.75rem; color: var(--text-secondary); margin-left: auto; }
-
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <header>
-        <h1>Strider / Dashboard</h1>
-        <div class="controls">
-            <div style="display:flex; align-items:center; gap: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2); padding-right: 1.5rem; margin-right: 0.5rem;">
-                <input type="text" id="targetScanInput" placeholder="Target Domain (e.g., dummy)">
-                <button id="targetScanBtn" style="background:var(--critical);">Live Scan</button>
-            </div>
-            <input type="text" id="searchInput" placeholder="Filter Local Data...">
-            <button id="downloadBtn">Download JSON</button>
+    <div class="loader-overlay" id="loader">
+        <div
+            style="width: 40px; height: 40px; border: 3px solid var(--border); border-top-color: var(--critical); border-radius: 50%; animation: spin 1s linear infinite;">
         </div>
-    </header>
-
-    <div>
-        <h2 id="summaryText" style="color: var(--text-secondary); font-size: 1rem; font-weight: 400; margin-bottom: 1rem;">
-            Loading latest scan data...
-        </h2>
+        <div class="loader-text" id="loaderText">EXECUTING LIVE SCAN...</div>
     </div>
+    <style>
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
 
-    <!-- Heatmap Section -->
-    <div class="heatmap-container" id="heatmapContainer" style="display: none;">
-        <div class="heatmap-title">Global Data Exposure Heatmap (By Entity Type)</div>
-        <div class="heatmap-grid" id="heatmapGrid"></div>
-    </div>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <h1>STRIDER<span>/ Investigation Console</span></h1>
+            </div>
+            <div class="scan-controls">
+                <input type="text" id="targetScanInput" placeholder="Target domain or site...">
+                <button id="targetScanBtn" class="btn-scan">RUN SCAN</button>
+            </div>
+            <div class="system-status">
+                <div><span class="status-dot"></span>System Online</div>
+                <div id="lastScanTime" style="margin-top: 0.25rem; font-family: 'JetBrains Mono', monospace;">Last Scan:
+                    --</div>
+            </div>
+        </header>
 
-    <div class="list-container" id="victimList">
-        <!-- Rendered by JS -->
-    </div>
-</div>
-
-<!-- Modal Structure -->
-<div class="modal-overlay" id="victimModal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">&times;</button>
-        <div class="modal-header" style="display:flex; justify-content:space-between; align-items:flex-end;">
+        <div class="sub-bar">
+            <div class="search-controls">
+                <input type="text" id="searchInput" placeholder="Search email / domain / incident...">
+            </div>
             <div>
-                <div class="modal-title" id="modalTitle">Victim Name</div>
-                <div class="meta" style="justify-content: flex-start; gap: 1rem; margin-bottom: 0;">
-                    <span id="modalBadge" class="badge">--</span>
-                    <span id="modalCount">0 Records</span>
-                </div>
-            </div>
-            
-            <div class="gauge" id="gaugeContainer">
-                <div class="gauge-bg"></div>
-                <div class="gauge-fill" id="gaugeFill"></div>
-                <div class="gauge-center">
-                    <span id="gaugeValue">0.0</span><span style="font-size:0.5em">/10</span>
-                </div>
+                <button id="downloadBtn" class="btn-download">Export JSON</button>
             </div>
         </div>
-        <ul class="entity-list" id="modalEntityList">
+
+        <!-- Severity Distribution Panel -->
+        <div class="distribution-panel" id="distPanel" style="display: none;">
+            <div class="dist-header">
+                <span>Severity Distribution</span>
+            </div>
+            <div class="dist-bar-wrapper" id="distBar">
+                <!-- Segments injected by JS -->
+            </div>
+            <div class="dist-stats">
+                <div><span>Identities Affected:</span> <span id="totalIdentities"
+                        style="color:var(--text-primary); font-size:1rem;">0</span></div>
+                <div><span>Total Exposures:</span> <span id="totalExposures"
+                        style="color:var(--text-primary); font-size:1rem;">0</span></div>
+            </div>
+        </div>
+
+        <div class="investigation-list" id="victimList">
             <!-- Rendered by JS -->
-        </ul>
+        </div>
     </div>
-</div>
 
-<script>
-    let reportData = null;
-    let cachedVictims = []; // Store parsed victims for modal access
+    <!-- Slide Panel -->
+    <div class="slide-panel-overlay" id="panelOverlay"></div>
+    <div class="slide-panel" id="detailPanel">
+        <div class="panel-header">
+            <button class="panel-close" id="closePanelBtn">&times;</button>
+            <div class="panel-title" id="panelTitle">--</div>
+            <div class="panel-metrics">
+                <div class="panel-score" id="panelScore">--</div>
+                <div class="panel-severity" id="panelSeverity">--</div>
+            </div>
+        </div>
+        <div class="panel-body">
 
-    async function loadData() {
-        try {
-            // Try relative path first (if opened locally in /reports)
-            // If that fails, try the absolute /reports route (if hosted by FastAPI on /)
-            let resp;
-            try {
-                 resp = await fetch('/reports/scan_report.json?t=' + new Date().getTime());
-            } catch(e) {
-                 resp = await fetch('scan_report.json?t=' + new Date().getTime());
-            }
-
-            if (!resp || !resp.ok) {
-                 resp = await fetch('scan_report.json?t=' + new Date().getTime());
-            }
-            if (!resp.ok) throw new Error("JSON not found");
-            
-            const data = await resp.json();
-            reportData = data;
-            
-            cachedVictims = groupVictims(reportData.details);
-            
-            renderHeatmap(cachedVictims);
-            renderList(cachedVictims, '');
-            updateSummary(reportData.summary);
-        } catch (e) {
-            document.getElementById('summaryText').innerText = "Failed to load scan_report.json. Make sure to generate the report first.";
-            console.error(e);
-        }
-    }
-
-    // Process raw incidents into Victim-centric groups, preferring raw uncensored identifiers
-    function groupVictims(incidents) {
-        let victims = {};
-
-        incidents.forEach(inc => {
-            let victimId = "Unknown Victim";
-            
-            // Prefer raw_value (uncensored) for grouping if available, else masked
-            for(let ent of inc.entities) {
-                if(ent.type === 'email' || ent.type === 'person') {
-                    victimId = ent.raw_value || ent.masked_value;
-                    break;
-                }
-            }
-
-            if (!victims[victimId]) {
-                victims[victimId] = {
-                    id: victimId, // Uncensored name
-                    score: 0.0,
-                    severity: "low",
-                    entities: [],
-                    incidents: [],
-                    events: []
-                };
-            }
-
-            victims[victimId].incidents.push(inc.incident_id);
-            if (inc.url) victims[victimId].events.push(inc.url);
-            victims[victimId].entities.push(...inc.entities.map(e => ({...e, url: inc.url})));
-            if (inc.risk_score > victims[victimId].score) {
-                victims[victimId].score = inc.risk_score;
-                victims[victimId].severity = inc.severity;
-            }
-        });
-
-        let arr = Object.values(victims);
-        arr.sort((a,b) => b.score - a.score);
-        return arr;
-    }
-    
-    // Render the Heatmap of Entity Types
-    function renderHeatmap(victims) {
-        const hContainer = document.getElementById('heatmapContainer');
-        const hGrid = document.getElementById('heatmapGrid');
-        
-        let counts = {};
-        victims.forEach(v => {
-            v.entities.forEach(e => {
-                counts[e.type] = (counts[e.type] || 0) + 1;
-            });
-        });
-        
-        const types = Object.keys(counts);
-        if(types.length === 0) return;
-        
-        hContainer.style.display = 'block';
-        hGrid.innerHTML = '';
-        
-        // Sort types by count descending
-        types.sort((a,b) => counts[b] - counts[a]).forEach(t => {
-            let count = counts[t];
-            // Determine risk color intensity
-            let intensityClass = 'intensity-none';
-            if (['credit_card', 'pan', 'aadhaar', 'ssn', 'password'].includes(t)) {
-                intensityClass = count > 0 ? 'intensity-high' : 'intensity-none';
-            } else if (['email', 'phone'].includes(t)) {
-                intensityClass = count > 5 ? 'intensity-high' : (count > 0 ? 'intensity-medium' : 'intensity-none');
-            } else {
-                intensityClass = count > 10 ? 'intensity-medium' : (count > 0 ? 'intensity-low' : 'intensity-none');
-            }
-
-            const cell = document.createElement('div');
-            cell.className = `heatmap-cell ${intensityClass}`;
-            cell.innerHTML = `
-                <div class="heatmap-label">${t}</div>
-                <div class="heatmap-val">${count}</div>
-            `;
-            hGrid.appendChild(cell);
-        });
-    }
-
-    function renderList(victims, filterText) {
-        const listContainer = document.getElementById('victimList');
-        listContainer.innerHTML = '';
-        
-        let targetText = filterText.toLowerCase();
-
-        let filtered = victims;
-        if(targetText) {
-            filtered = victims.filter(v => 
-                v.id.toLowerCase().includes(targetText) ||
-                v.entities.some(e => e.type.toLowerCase().includes(targetText)) ||
-                v.events.some(url => url.toLowerCase().includes(targetText))
-            );
-        }
-
-        if(filtered.length === 0) {
-            listContainer.innerHTML = `<div class="empty-state">No victims found matching criteria.</div>`;
-            return;
-        }
-
-        // Render sleek list items
-        filtered.forEach((v, index) => {
-            const item = document.createElement('div');
-            item.className = 'list-item';
-            item.setAttribute('data-severity', v.severity);
-            
-            // On click, pop the modal with full details and trigger animation
-            item.onclick = () => openModal(v.id);
-
-            item.innerHTML = `
-                <div class="list-info">
-                    <span class="badge ${v.severity}">${v.severity} Risk</span>
-                    <div class="list-name">${v.id}</div>
-                    <div class="list-meta">${v.entities.length} records exposed across ${v.incidents.length} event(s)</div>
+            <div>
+                <div class="section-title">Exposure Timeline</div>
+                <div class="timeline" id="panelTimeline">
+                    <!-- Rendered by JS -->
                 </div>
-                <div class="list-action">Click to view details &rarr;</div>
-            `;
-            listContainer.appendChild(item);
-        });
-    }
-    
-    // Modal Functions
-    function openModal(victimId) {
-        const victim = cachedVictims.find(v => v.id === victimId);
-        if(!victim) return;
-        
-        document.getElementById('modalTitle').innerText = victim.id;
-        
-        const badge = document.getElementById('modalBadge');
-        badge.className = `badge ${victim.severity}`;
-        badge.innerText = `${victim.severity} Risk`;
-        
-        document.getElementById('modalCount').innerText = `${victim.entities.length} records exposed across ${victim.incidents.length} event(s)`;
-        
-        const list = document.getElementById('modalEntityList');
-        
-        if (victim.entities.length === 0) {
-            list.innerHTML = `<li style="text-align:center; padding: 2rem; color: #64748b;">No explicit entities extracted (Contextual risk only)</li>`;
-        } else {
-            list.innerHTML = victim.entities.map(e => {
-                const displayVal = e.raw_value || e.masked_value;
-                const sourceLink = e.url ? `<a href="${e.url}" target="_blank" style="color:var(--accent); text-decoration:none;">${e.url}</a>` : 'Unknown Source';
-                return `
-                <li class="entity-item" style="flex-direction:column; align-items:flex-start; gap:0.5rem;">
-                    <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
-                        <div><span class="entity-type">[${e.type.toUpperCase()}]</span>
-                        <span class="entity-value">${displayVal}</span></div>
-                        <span class="entity-context">Confidence: ${(e.confidence * 100).toFixed(0)}%</span>
-                    </div>
-                    <div style="font-size:0.75rem; color:var(--text-secondary); padding-left:0.5rem; border-left:2px solid var(--accent); width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">
-                        Detected in: ${sourceLink}
-                    </div>
-                </li>`;
-            }).join('');
+            </div>
+
+            <div>
+                <div class="section-title">Detected Entities</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Masked Value</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody id="panelTableBody">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        let reportData = null;
+        let cachedVictims = [];
+
+        // Utility to determine severity from score if not explicitly set
+        function getSeverity(score) {
+            if (score >= 8.0) return 'critical';
+            if (score >= 6.0) return 'high';
+            if (score >= 3.0) return 'medium';
+            if (score > 0) return 'low';
+            return 'none';
         }
-        
-        document.getElementById('victimModal').classList.add('active');
-        
-        // Speedometer Animation Logic
-        const gaugeFill = document.getElementById('gaugeFill');
-        const gaugeValue = document.getElementById('gaugeValue');
-        const gaugeContainer = document.getElementById('gaugeContainer');
-        
-        // Reset gauge briefly so transition is noticeable
-        gaugeFill.style.transition = 'none';
-        gaugeFill.style.transform = 'rotate(-225deg)';
-        gaugeValue.innerText = '0.0';
-        
-        let color = 'var(--low)';
-        if(victim.severity === 'critical' || victim.severity === 'high') color = 'var(--critical)';
-        else if(victim.severity === 'medium') color = 'var(--medium)';
-        gaugeContainer.style.setProperty('--gauge-color', color);
-        
-        // Force reflow
-        void gaugeFill.offsetWidth;
-        
-        // Trigger animation
-        setTimeout(() => {
-            gaugeFill.style.transition = 'transform 1s cubic-bezier(0.22, 1, 0.36, 1)';
-            const finalScore = (victim.score * 10).toFixed(1);
-            const rotation = -225 + (victim.score * 180);
-            gaugeFill.style.transform = `rotate(${rotation}deg)`;
-            
-            // Simple generic counter animation for text
-            let current = 0.0;
-            let target = parseFloat(finalScore);
-            let interval = setInterval(() => {
-                current += 0.5;
-                if(current >= target) {
-                    gaugeValue.innerText = finalScore;
-                    clearInterval(interval);
-                } else {
-                    gaugeValue.innerText = current.toFixed(1);
+
+        async function loadData() {
+            try {
+                let resp;
+                try {
+                    resp = await fetch('/reports/scan_report.json?t=' + new Date().getTime());
+                } catch (e) {
+                    resp = await fetch('scan_report.json?t=' + new Date().getTime());
                 }
-            }, 30);
-        }, 50);
-    }
-    
-    function closeModal() {
-        document.getElementById('victimModal').classList.remove('active');
-    }
 
-    // Close modal on click outside
-    document.getElementById('victimModal').addEventListener('click', (e) => {
-        if(e.target.id === 'victimModal') closeModal();
-    });
+                if (!resp || !resp.ok) {
+                    resp = await fetch('scan_report.json?t=' + new Date().getTime());
+                }
+                if (!resp.ok) throw new Error("JSON not found");
 
-    function updateSummary(summary) {
-        if(!summary) return;
-        document.getElementById('summaryText').innerHTML = 
-            `Last Scanned: <b>${new Date(reportData.timestamp).toLocaleString()}</b> &nbsp;&bull;&nbsp; 
-             Total Issues: <b>${summary.total_incidents}</b> &nbsp;&bull;&nbsp; 
-             Critical/High Threats: <b style="color:var(--critical)">${summary.critical_risk_count + summary.high_risk_count}</b>`;
-    }
+                const data = await resp.json();
+                reportData = data;
 
-    // Event Listeners
-    document.getElementById('searchInput').addEventListener('input', (e) => {
-        if(cachedVictims.length > 0) renderList(cachedVictims, e.target.value);
-    });
+                cachedVictims = groupVictims(reportData.details);
 
-    document.getElementById('downloadBtn').addEventListener('click', () => {
-        if(!reportData) return;
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
-        const anchor = document.createElement('a');
-        anchor.setAttribute("href", dataStr);
-        anchor.setAttribute("download", "strider_scan_report.json");
-        document.body.appendChild(anchor);
-        anchor.click();
-        anchor.remove();
-    });
+                renderDistribution(cachedVictims);
+                renderList(cachedVictims, '');
 
-    document.getElementById('targetScanBtn').addEventListener('click', async () => {
-        const target = document.getElementById('targetScanInput').value.trim();
-        const btn = document.getElementById('targetScanBtn');
-        const summary = document.getElementById('summaryText');
-        
-        btn.disabled = true;
-        btn.innerText = 'Scanning...';
-        summary.innerHTML = `Running Live Web Scrapers for <b>${target || 'ALL TARGETS'}</b>... This may take up to 20 seconds.`;
-        document.getElementById('victimList').innerHTML = '';
-        document.getElementById('heatmapContainer').style.display = 'none';
-
-        try {
-            const resp = await fetch('/api/scan', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ target: target })
-            });
-            if (!resp.ok) throw new Error("Backend scan failed");
-            await loadData(); // Reloads the newly saved scan_report.json
-        } catch (e) {
-            summary.innerText = "Error running scan: " + e.message;
-        } finally {
-            btn.disabled = false;
-            btn.innerText = 'Live Scan';
+                if (reportData.timestamp) {
+                    document.getElementById('lastScanTime').innerText = `Last Scan: ${new Date(reportData.timestamp).toISOString().replace('T', ' ').substring(0, 19)}`;
+                }
+            } catch (e) {
+                document.getElementById('victimList').innerHTML = `<div class="empty-state">No operational data found. Execute a scan to begin.</div>`;
+                console.error(e);
+            }
         }
-    });
 
-    // Boot
-    loadData();
+        function groupVictims(incidents) {
+            let victims = {};
 
-</script>
+            incidents.forEach(inc => {
+                let victimId = "Unknown Subject";
+
+                for (let ent of inc.entities) {
+                    if (ent.type === 'email' || ent.type === 'person') {
+                        victimId = ent.raw_value || ent.masked_value;
+                        break;
+                    }
+                }
+
+                if (!victims[victimId]) {
+                    victims[victimId] = {
+                        id: victimId,
+                        score: 0.0,
+                        severity: "low",
+                        entities: [],
+                        incidents: [],
+                        events: []
+                    };
+                }
+
+                victims[victimId].incidents.push(inc);
+                if (inc.url) victims[victimId].events.push(inc.url);
+                victims[victimId].entities.push(...inc.entities.map(e => ({ ...e, url: inc.url, timestamp: inc.timestamp || reportData.timestamp })));
+
+                if (inc.risk_score > victims[victimId].score) {
+                    victims[victimId].score = inc.risk_score;
+                    victims[victimId].severity = inc.severity || getSeverity(inc.risk_score);
+                }
+            });
+
+            let arr = Object.values(victims);
+            arr.sort((a, b) => b.score - a.score);
+            return arr;
+        }
+
+        function renderDistribution(victims) {
+            const panel = document.getElementById('distPanel');
+            const bar = document.getElementById('distBar');
+
+            if (victims.length === 0) {
+                panel.style.display = 'none';
+                return;
+            }
+
+            panel.style.display = 'block';
+
+            let counts = { critical: 0, high: 0, medium: 0, low: 0, none: 0 };
+            let totalEntities = 0;
+
+            victims.forEach(v => {
+                counts[v.severity] = (counts[v.severity] || 0) + 1;
+                totalEntities += v.entities.length;
+            });
+
+            const total = victims.length;
+
+            document.getElementById('totalIdentities').innerText = total;
+            document.getElementById('totalExposures').innerText = totalEntities;
+
+            bar.innerHTML = '';
+
+            const order = ['critical', 'high', 'medium', 'low', 'none'];
+            order.forEach(sev => {
+                if (counts[sev] > 0) {
+                    const pct = (counts[sev] / total) * 100;
+                    const seg = document.createElement('div');
+                    seg.className = 'dist-segment';
+                    seg.style.width = `${pct}%`;
+                    seg.style.backgroundColor = `var(--${sev})`;
+                    seg.title = `${sev.toUpperCase()}: ${counts[sev]}`;
+                    bar.appendChild(seg);
+                }
+            });
+        }
+
+        function renderList(victims, filterText) {
+            const listContainer = document.getElementById('victimList');
+            listContainer.innerHTML = '';
+
+            let targetText = filterText.toLowerCase();
+
+            let filtered = victims;
+            if (targetText) {
+                filtered = victims.filter(v =>
+                    v.id.toLowerCase().includes(targetText) ||
+                    v.entities.some(e => e.type.toLowerCase().includes(targetText)) ||
+                    v.events.some(url => url.toLowerCase().includes(targetText))
+                );
+            }
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = `<div class="empty-state">No identities matching operational criteria.</div>`;
+                return;
+            }
+
+            filtered.forEach(v => {
+                const item = document.createElement('div');
+                item.className = 'case-card';
+
+                item.onclick = () => openPanel(v.id);
+
+                // Extract unique domains/sources
+                let sources = new Set();
+                v.events.forEach(url => {
+                    try {
+                        const domain = new URL(url).hostname;
+                        sources.add(domain);
+                    } catch (e) {
+                        if (url.includes('github')) sources.add('github.com');
+                        else if (url.includes('pastebin')) sources.add('pastebin.com');
+                        else sources.add('Unknown');
+                    }
+                });
+                const sourceStr = Array.from(sources).join(', ') || 'Unknown Source';
+
+                item.innerHTML = `
+                <div class="severity-strip ${v.severity}"></div>
+                <div class="card-content">
+                    <div class="card-top">
+                        <div class="card-name">${v.id}</div>
+                        <div class="card-score ${v.severity}">${v.score.toFixed(1)}</div>
+                    </div>
+                    <div class="card-mid">
+                        <div>Exposures: <strong>${v.entities.length}</strong></div>
+                        <div>Events: <strong>${v.incidents.length}</strong></div>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-sources">SOURCES: ${sourceStr}</div>
+                        <div class="chevron">&#10095;</div>
+                    </div>
+                </div>
+            `;
+                listContainer.appendChild(item);
+            });
+        }
+
+        function openPanel(victimId) {
+            const victim = cachedVictims.find(v => v.id === victimId);
+            if (!victim) return;
+
+            document.getElementById('panelTitle').innerText = victim.id;
+
+            const scoreEl = document.getElementById('panelScore');
+            scoreEl.innerText = victim.score.toFixed(1);
+            scoreEl.className = `panel-score`;
+            scoreEl.style.color = `var(--${victim.severity})`;
+
+            const sevEl = document.getElementById('panelSeverity');
+            sevEl.innerText = victim.severity;
+            sevEl.className = `panel-severity ${victim.severity}`;
+
+            // Timeline
+            const timeline = document.getElementById('panelTimeline');
+            timeline.innerHTML = '';
+
+            // Sort entities by time conceptually (if timestamp available, else use array order)
+            victim.entities.forEach(e => {
+                const timeStr = e.timestamp ? new Date(e.timestamp).toISOString().replace('T', ' ').substring(0, 19) : 'Unknown Time';
+                const sourceLink = e.url ? `<a href="${e.url}" target="_blank">${e.url}</a>` : 'Unknown Source';
+
+                const li = document.createElement('div');
+                li.className = 'timeline-item';
+
+                // Set dot color based on entity type risk implicitly or just default
+                let dotColor = 'var(--low)';
+                if (['password', 'credit_card'].includes(e.type)) dotColor = 'var(--critical)';
+
+                li.innerHTML = `
+                <div class="timeline-time">${timeStr}</div>
+                <div class="timeline-content">
+                    Detected <strong>${e.type.toUpperCase()}</strong> at ${sourceLink}
+                </div>
+            `;
+                timeline.appendChild(li);
+            });
+
+            if (victim.entities.length === 0) {
+                timeline.innerHTML = `<div style="color:var(--text-secondary); font-style:italic;">No discrete entity events.</div>`;
+            }
+
+            // Table
+            const tbody = document.getElementById('panelTableBody');
+            tbody.innerHTML = '';
+
+            if (victim.entities.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:var(--text-secondary);">No explicit entities extracted</td></tr>`;
+            } else {
+                victim.entities.forEach(e => {
+                    const tr = document.createElement('tr');
+                    const displayVal = e.raw_value || e.masked_value || '<redacted>';
+                    tr.innerHTML = `
+                    <td class="entity-type">${e.type}</td>
+                    <td>${displayVal}</td>
+                    <td>${(e.confidence * 100).toFixed(0)}%</td>
+                `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            document.getElementById('panelOverlay').classList.add('active');
+            document.getElementById('detailPanel').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closePanel() {
+            document.getElementById('panelOverlay').classList.remove('active');
+            document.getElementById('detailPanel').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('closePanelBtn').addEventListener('click', closePanel);
+        document.getElementById('panelOverlay').addEventListener('click', closePanel);
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            if (cachedVictims.length > 0) renderList(cachedVictims, e.target.value);
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            if (!reportData) return;
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
+            const anchor = document.createElement('a');
+            anchor.setAttribute("href", dataStr);
+            anchor.setAttribute("download", "strider_operational_export.json");
+            document.body.appendChild(anchor);
+            anchor.click();
+            anchor.remove();
+        });
+
+        document.getElementById('targetScanBtn').addEventListener('click', async () => {
+            const target = document.getElementById('targetScanInput').value.trim();
+            const loader = document.getElementById('loader');
+            const loaderText = document.getElementById('loaderText');
+
+            loader.classList.add('active');
+            loaderText.innerText = target ? `EXECUTING TARGETED SCAN: ${target}` : `EXECUTING GLOBAL SCAN`;
+
+            try {
+                const resp = await fetch('/api/scan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ target: target })
+                });
+                if (!resp.ok) throw new Error("API operation failed.");
+                await loadData();
+            } catch (e) {
+                alert("Scan execution failed: " + e.message);
+            } finally {
+                loader.classList.remove('active');
+            }
+        });
+
+        // Boot
+        loadData();
+
+    </script>
 </body>
+
 </html>
